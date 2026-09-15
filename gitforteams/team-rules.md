@@ -8,3 +8,5 @@ Example:
 
 ## Our Rules
 - You got this, don't doubt yourself and always ask for help if you need. — Amir
+
+- Fight the feeling we got this guys 
