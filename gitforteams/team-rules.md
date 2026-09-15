@@ -9,3 +9,4 @@ Example:
 ## Our Rules
 - You got this, don't doubt yourself and always ask for help if you need. — Amir
 - Don't be scared to ask for details - dj
+- Just do the best you can do, everyone can't be the best at everything - Q
