@@ -7,4 +7,5 @@ Example:
 - We review each other's PRs within one business day. — Facilitator
 
 ## Our Rules
-- (add your rule here and delete this placeholder line)
+- (Wellness, goodness, and complexity.)
+,]
