@@ -8,4 +8,4 @@ Example:
 
 ## Our Rules
 - You got this, don't doubt yourself and always ask for help if you need. — Amir
-- may the tech be with you ~ cortez
+- may the tech be with you ~ Cortez
