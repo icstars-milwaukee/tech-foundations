@@ -8,5 +8,4 @@ Example:
 
 ## Our Rules
 - You got this, don't doubt yourself and always ask for help if you need. — Amir
-
--  im trying grandpa, well thats too damn bad try harder  
+- may the tech be with you ~ cortez
