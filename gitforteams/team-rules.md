@@ -7,4 +7,7 @@ Example:
 - We review each other's PRs within one business day. — Facilitator
 
 ## Our Rules
-- (add your rule here and delete this placeholder line)
+- You got this, don't doubt yourself and always ask for help if you need. — Amir
+-Hey Amir
+- Have faith in the process, also be curious -joshua
+- be curious and have faith, learning is a process
