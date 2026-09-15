@@ -7,5 +7,4 @@ Example:
 - We review each other's PRs within one business day. — Facilitator
 
 ## Our Rules
-- Branch Name is Clear
-- Changes are small
+- Branch Name is Clear - Luke
