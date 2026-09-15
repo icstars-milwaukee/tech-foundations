@@ -8,4 +8,4 @@ Example:
 
 ## Our Rules
 - (Wellness, goodness, and complexity.)
-,]
+,]be kind
