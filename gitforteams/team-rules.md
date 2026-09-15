@@ -7,4 +7,5 @@ Example:
 - We review each other's PRs within one business day. — Facilitator
 
 ## Our Rules
-- one focused task per PR. Easier to review, easier to fix.
+
+one focused task per PR. Easier to review, easier to fix.
