@@ -1,4 +1,4 @@
-# T3B Training Repo — Git for Teams
+T3B Training Repo — Git for Teams
 
 Welcome! This is the shared repo we'll use to practice real team Git workflow.
 

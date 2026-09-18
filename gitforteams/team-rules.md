@@ -9,4 +9,4 @@ Example:
 ## Our Rules
 - You got this, don't doubt yourself and always ask for help if you need. — Amir
 - Don't be scared to ask for details - dj
-- is this thing on?
+- blessed is the one who perserveres under trial -fernando
