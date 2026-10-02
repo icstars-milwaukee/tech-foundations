@@ -1,0 +1,101 @@
+<title>Geek Week 2026 — Superlative Awards · Cycle 21</title>
+<style>
+  /* Single visual world on purpose: a printed certificate is always paper. */
+  :root{
+    --paper:#FAF6F2; --ink:#161217; --ink-soft:#4A4348; --muted:#8A8085;
+    --red:#D6003C; --line:#E4DCD6;
+    --mono:Consolas,"Courier New",monospace;
+    --disp:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#DED6CF;font-family:var(--disp);color:var(--ink);
+       display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px}
+  .cert{background:var(--paper);width:11in;height:8.5in;position:relative;
+        display:flex;flex-direction:column;justify-content:space-between;
+        padding:.75in .9in;box-shadow:0 8px 30px rgba(22,18,23,.25)}
+  .frame{position:absolute;inset:.42in;border:2.5px solid var(--ink);pointer-events:none}
+  .frame::after{content:"";position:absolute;inset:5px;border:1px solid var(--red)}
+  .head{display:flex;justify-content:space-between;align-items:baseline}
+  .brand{font-weight:900;font-size:21px}
+  .brand .pipe{font-weight:400;opacity:.55;margin:0 .12em}
+  .brand .star{color:var(--red)}
+  .brand .mke{font-weight:400;letter-spacing:.22em;text-transform:uppercase;font-size:.58em;
+              vertical-align:.12em;margin-left:.9em;color:var(--muted)}
+  .event{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+  .mid{text-align:center;display:flex;flex-direction:column;align-items:center;gap:.18in}
+  .emoji{font-size:54px;line-height:1}
+  .award{font-weight:900;font-size:46px;letter-spacing:-.01em;text-transform:uppercase;
+         line-height:1.02;text-wrap:balance}
+  .award .star{color:var(--red)}
+  .presented{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+  .name{font-weight:900;font-size:40px;color:var(--red);letter-spacing:-.01em}
+  .rule{width:2.6in;border-top:2.5px solid var(--ink);margin:.04in 0}
+  .cite{font-size:15.5px;line-height:1.65;color:var(--ink-soft);max-width:7.6in;text-wrap:balance}
+  .cite b{color:var(--ink)}
+  .cite i{color:var(--ink)}
+  .footrow{display:flex;justify-content:space-between;align-items:flex-end;gap:.6in}
+  .sig{flex:1;text-align:center}
+  .sig .line{border-top:1.5px solid var(--ink);margin-bottom:5px}
+  .sig span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .date{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.08em;text-align:center;flex:1}
+  @page{size:11in 8.5in;margin:0}
+  @media print{
+    body{background:none;padding:0;gap:0;display:block}
+    .cert{box-shadow:none;page-break-after:always;width:11in;height:8.5in}
+  }
+</style>
+
+<script>
+const EVENT = "Geek Week 2026 · Cycle 21 · Milwaukee";
+const DATE = "Friday, October 2, 2026";
+const certs = [
+  {emoji:"🏆", award:"First Through the Wall", name:"Ventura Perez",
+   cite:"First to finish all <b>15 tasks</b> — on Day 3 of a five-day week. Twelve of fifteen passed on the first try — and the freedom he earned, he spent coaching the room."},
+  {emoji:"🏁", award:"The Streak", name:"Luke Vang",
+   cite:"Finished <b>15 of 15</b> — his final <b>ten tasks all passed first-try</b>, four of them in under thirty seconds. Day one said “failed for time.” By Friday, the clock couldn't catch him."},
+  {emoji:"🔄", award:"Turnaround of the Week", name:"Amir Husseini",
+   cite:"Monday at 2 p.m., he was done testing. By Thursday: <b>14 of 15</b>, nine straight first-try passes, and a fourteen-second run. No one traveled farther between Monday and Friday."},
+  {emoji:"⚡", award:"The Speedrunner", name:"Jose Romero",
+   cite:"The fastest recorded pass of the entire cohort — <b>Task 9 in 0:13</b> — with three runs under fifteen seconds. Eleven tasks on the board, quietly one of the strongest weeks in the room."},
+  {emoji:"💡", award:"The New Method", name:"Darryl Moore",
+   cite:"The tracker's own words: <i>“cool new method.”</i> Out of attempts on Task 1 on Day 1 — he answered with <b>seven passes</b>, three of them Friday morning at 0:54, 0:19, and 0:19, inventing his own way there."},
+  {emoji:"🚀", award:"Boldest Leap", name:"Paris LeFlore",
+   cite:"Passed <b>Task 12</b> while still working Task 5 — seven tasks past his own frontier. Nobody else jumped that far and landed it."},
+  {emoji:"🎯", award:"The Clutch", name:"Fernando Gamboa",
+   cite:"Task 1, final attempt, everything on the line: passed it in <b>0:56</b> — a sub-minute run under maximum pressure. Five tasks on the board since."},
+  {emoji:"🧭", award:"The Recalibration", name:"Cortez Hale",
+   cite:"Every early note said “strong understanding, moving too fast.” He slowed down — and ran <b>three straight passes, each faster than the last: 2:42, 1:59, 1:58</b>. The tracker wrote: <i>“Passed on time.”</i> Coaching in, results out."},
+  {emoji:"🎓", award:"The Professor", name:"Desmond Scott",
+   cite:"The tracker, verbatim: <i>“Could perfectly explain syntax”</i> … <i>“Comprehension is on the high.”</i> The strongest understanding-per-attempt in the room — and his pass proved it."},
+  {emoji:"💥", award:"Breakthrough of the Week", name:"Joshua Nasberg",
+   cite:"After seven attempts without one, his Task 4 pass carried the strongest pass note of the entire cohort: <i>“Demonstrated Complete Knowledge Check and understanding.”</i> The only pass all week called <b>complete</b>."},
+  {emoji:"🔥", award:"The Relentless", name:"Yeyliz Martinez",
+   cite:"Twelve attempts. Never skipped a testing day. Still swinging Friday morning — and the only intern whose tracker notes chart improvement run over run: <i>“correct syntax… could explain… comprehension is showing improvement.”</i>"},
+  {emoji:"⚒️", award:"The Iron Will", name:"LaQuesha Bell",
+   cite:"Fought through three slow-typing fails and documented <b>keyboard failures</b> — then ran <b>four consecutive passes, three of them Friday morning</b>. The hottest closing streak in the room. The hardware broke. She didn't."},
+];
+document.title = "Geek Week 2026 — Superlative Awards · Cycle 21";
+for (const c of certs) {
+  document.write(`
+<div class="cert">
+  <div class="frame"></div>
+  <div class="head">
+    <div class="brand">i.c.stars<span class="pipe">|</span><span class="star">*</span><span class="mke">Milwaukee</span></div>
+    <div class="event">${EVENT}</div>
+  </div>
+  <div class="mid">
+    <div class="emoji">${c.emoji}</div>
+    <div class="award">${c.award}<span class="star">*</span></div>
+    <div class="presented">is presented to</div>
+    <div class="name">${c.name}</div>
+    <div class="rule"></div>
+    <p class="cite">${c.cite}</p>
+  </div>
+  <div class="footrow">
+    <div class="sig"><div class="line"></div><span>Tech Fellow</span></div>
+    <div class="date">${DATE}</div>
+    <div class="sig"><div class="line"></div><span>Program Manager</span></div>
+  </div>
+</div>`);
+}
+</script>
