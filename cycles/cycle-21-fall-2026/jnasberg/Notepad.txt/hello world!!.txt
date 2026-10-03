@@ -1,1 +1,2 @@
-What are we going to be doing today?
+Hello, World!
+    Today we're going to turn caffeine into code and bugs into features—one witty line at a time. ☕️
