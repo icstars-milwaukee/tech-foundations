@@ -20,7 +20,7 @@ Use a clear branch name such as `feature/about-page`, `fix/nav-link`, or `docs/g
 git status                       # see what changed; use this often
 git add .                        # stage all your changes
 git commit -m                    "Describe the change clearly"
-git push origin my-branch         # send your branch to GitHub
+git push origin my-branch        # send your branch to GitHub
 ```
 
 Then open a Pull Request (PR) on GitHub and ask for review.
