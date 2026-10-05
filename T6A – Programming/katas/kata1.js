@@ -20,6 +20,8 @@
 
 for (let i = 1; i <= 10; i++) {
 
-    //print 1 through 10
+  // print only even numbers instead
+  if (!(i % 2)) {
     console.log(i);
+  }
 }
