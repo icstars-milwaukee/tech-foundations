@@ -28,13 +28,19 @@
 // Your code here
 
 for (let i = 1; i <= 30; i++) {
+  // print "FizzBuzz" if it divides evenly by both 3 and 5
   if (i % 3 == 0 && i % 5 == 0) {
     console.log("FizzBuzz");
   } else if (i % 5 == 0) {
+
+    //print "Buzz" if it divides evenly by 3
     console.log("Buzz");
   } else if (i % 3 == 0) {
+
+    //print "Fizz" if it divides evenly by 5
     console.log("Fizz");
   } else {
+    //Otherwise only print the number
     console.log(i);
   }
 }
