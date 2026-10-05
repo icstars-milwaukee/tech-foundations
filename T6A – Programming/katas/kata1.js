@@ -24,3 +24,11 @@ for (let i=1; i <= 10; i++) {
     console.log(i);
 }
 
+
+// This loop uses the modulus operator to check if a number is even 
+// or odd, and if it is even, it will print i, otherwise, it will not.
+for (let i=1; i <= 10; i++) {
+    if (i % 2 == 0) {
+        console.log(i);
+    }
+}
