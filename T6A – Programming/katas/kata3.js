@@ -27,3 +27,17 @@
 // ============================================================
 
 // Your code here
+// Loop through each row of the multiplication table
+for (let row = 1; row <= 3; row++) {
+  // Store the values for the current row
+  let rowText = "";
+
+  // Loop through each cell in the current row
+  for (let cell = 1; cell <= 3; cell++) {
+    // Multiply the row and cell numbers and add them to the row
+    rowText += row * cell + " ";
+  }
+
+  // Print the completed row
+  console.log(rowText);
+}
