@@ -20,15 +20,17 @@
 // This loops is going to just iterate from 1 to 1o and print all the numbers
 // I wrote it this way because it's just a straight shot from 1 to 10.
 
-for (let i=1; i <= 10; i++) {
-    console.log(i);
+for (let num=1; num <= 10; num++) {
+    console.log(num);
 }
 
 
 // This loop uses the modulus operator to check if a number is even 
 // or odd, and if it is even, it will print i, otherwise, it will not.
-for (let i=1; i <= 10; i++) {
-    if (i % 2 == 0) {
-        console.log(i);
+for (let num=1; num <= 10; num++) {
+    if (num % 2 == 0) {
+        console.log(num);
     }
 }
+
+// I refactored the code to use the iterator variable num instead of i
