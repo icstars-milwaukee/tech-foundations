@@ -38,5 +38,6 @@ for (let num=1; num <= 30; num++) {
     }
 }
 
+// The variable name is set to num instead of i to make it cleaner.
 // I wrote the conditions in this order because I need to check for divisibility by both 3 and 5 first.
 // If I checked divisibility by 3 or 5 first, numbers like 15 would only print "Fizz" or "Buzz" instead of "FizzBuzz".
