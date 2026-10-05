@@ -27,3 +27,22 @@
 // ============================================================
 
 // Your code here
+
+const size = Number(process.argv[2]);
+
+if (!Number.isInteger(size) || size < 1 || size > 12) {
+  console.error("Please give a whole number from 1 to 12, e.g. node katas/kata3.js 5");
+  process.exit(1);
+}
+
+for (let row = 1; row <= size; row++) {
+  let line = "";
+  for (let col = 1; col <= size; col++) {
+    line += row * col + " ";
+  }
+  console.log(line);
+}
+// I used a nested loop to generate the multiplication table.
+// The outer loop iterates over the rows, and the inner loop iterates over the columns.
+// I built each row into a string and printed it once per row to avoid multiple console.log calls.
+// The guard clause ensures that the input is a whole number between 1 and 12, exiting with an error message if it is not.
