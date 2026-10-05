@@ -7,6 +7,7 @@ Example:
 
 - We review each other's PRs within one business day. — Facilitator
 
+
 ## Our Rules
 
 - You got this, don't doubt yourself, and always ask for help if you need. — Amir
@@ -18,3 +19,8 @@ Example:
 - We make space for each other to learn, fail forward, and grow together with patience and respect. — Joshua Nasberg
 
 We are a hopeful and caring community at IC Stars, and we support one another with patience, encouragement, and respect as we learn and grow together.
+- Branch Name is Clear - Luke
+- You got this, don't doubt yourself and always ask for help if you need. — Amir
+- Don't be scared to ask for details - dj
+- We make sure that everyone's ideas are heard and valued by everyone.-Ventura
+- may the tech be with you ~ Cortez
