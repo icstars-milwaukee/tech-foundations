@@ -26,3 +26,9 @@
 // ============================================================
 
 // Your code here
+for (let i = 1; i <= 30; i++) {
+    console.log(i);
+}
+
+// I wrote the conditions in this order because I need to check for divisibility by both 3 and 5 first.
+// If I checked divisibility by 3 or 5 first, numbers like 15 would only print "Fizz" or "Buzz" instead of "FizzBuzz".
