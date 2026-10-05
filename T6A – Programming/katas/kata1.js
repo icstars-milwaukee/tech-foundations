@@ -17,3 +17,9 @@
 // ============================================================
 
 // Your code here
+//loops over numbers 1 - 10 and outputs the even ones
+for (let i = 0; i <= 10; i++) {
+    if (i % 2 == 0){
+    console.log(i);
+}
+}

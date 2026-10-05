@@ -25,5 +25,44 @@
 //
 // Run it:  node katas/kata3.js 5
 // ============================================================
+//This is what was asked of me using the hints LaQuesha
+// for (let row = 1; row <= 3; row++) {
+  let rowText = "";
 
-// Your code here
+  for (let cell = 1; cell <= 3; cell++) {
+    rowText += row * cell + " ";
+  }
+
+  console.log(rowText);
+}
+
+process.argv[2]
+const MIN_SIZE = 1;
+const MAX_SIZE = 12;
+
+const size = Number(process.argv[2]);
+
+// Guard clause: reject anything that is not a whole number
+// between the allowed minimum and maximum.
+if (!Number.isInteger(size) || size < MIN_SIZE || size > MAX_SIZE) {
+  console.log(`Please enter a whole number between ${MIN_SIZE} and ${MAX_SIZE}.`);
+  process.exit(1);
+}
+
+// The outer loop creates each row of the table.
+for (let row = 1; row <= size; row++) {
+  let rowText = "";
+
+  // The inner loop creates each cell within the current row.
+  for (let column = 1; column <= size; column++) {
+    rowText += row * column + " ";
+  }
+
+  // Print the completed row once instead of printing each cell separately.
+  console.log(rowText);
+}
+
+for (let row = 1; row <= size; row++) {
+  for (let column = 1; column <= size; column++) {
+
+    // Completed Kata 3, the first item I shared has the row rows 1x1, 2x1, 3,1 next line 2x1, 2x2, 3x2

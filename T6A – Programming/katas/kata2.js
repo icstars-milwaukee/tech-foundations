@@ -26,3 +26,41 @@
 // ============================================================
 
 // Your code here
+
+for (let n = 1; n <= 30; n++) {
+  console.log(n);
+}
+
+
+
+for (let n = 1; n <= 30; n++) {
+  if (n % 3 === 0 && n % 5 === 0) {
+    console.log("FizzBuzz");
+  } else if (n % 3 === 0) {
+    console.log("Fizz");
+  } else if (n % 5 === 0) {
+    console.log("Buzz");
+  } else {
+    console.log(n);
+  }
+}
+
+const START = 1;
+const END = 30;
+const FIZZ_NUMBER = 3;
+const BUZZ_NUMBER = 5;
+
+for (let number = START; number <= END; number++) {
+
+  // Check FizzBuzz first because numbers like 15
+  // are evenly divisible by both 3 and 5.
+  if (number % FIZZ_NUMBER === 0 && number % BUZZ_NUMBER === 0) {
+    console.log("FizzBuzz");
+  } else if (number % FIZZ_NUMBER === 0) {
+    console.log("Fizz");
+  } else if (number % BUZZ_NUMBER === 0) {
+    console.log("Buzz");
+  } else {
+    console.log(number);
+  }
+}
