@@ -27,6 +27,7 @@
 
 // Your code here
 
+// The beginning of the loop that counts from 1 to 30. The if statement checks if the number is divisible by both 3 and 5 first, then checks for divisibility by 3, then by 5, and finally prints the number itself if none of the conditions are met.
 for (let i = 1; i <= 30; i++) {
     if (i % 3 === 0 && i % 5 === 0) {
         console.log("FizzBuzz");

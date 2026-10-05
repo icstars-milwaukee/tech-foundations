@@ -16,16 +16,10 @@
 // Run it:  node katas/kata1.js
 // ============================================================
 
-// We use a loop because we need to generate a pattern, not write
-// 10 separate log statements by hand. The loop runs 10 times,
-// and each pass calculates the next even number by adding 2.
-const firstEvenNumber = 2;
-const totalEvenNumbers = 10;
-const evenStep = 2;
+// Your code here
 
-for (let count = 0; count < totalEvenNumbers; count++) {
-  // We start at 2 so the first value is even, then we add 2 each time
-  // to keep every value in the sequence even.
-  const evenNumber = firstEvenNumber + count * evenStep;
-  console.log(evenNumber);
+//loops over numbers 1-10 and outputs the number to the console
+for (let i = 0; i < 11; i++) {
+    if(i%2 === 0)
+    console.log(i); 0,1,2,3,4
 }
