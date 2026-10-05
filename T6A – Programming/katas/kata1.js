@@ -17,3 +17,10 @@
 // ============================================================
 
 // Your code here
+const totalNumbers = 10;
+
+for (let count = 1; count <= totalNumbers; count++) {
+  // Including both 1 and 10 prints the complete requested range.
+  console.log(count);
+}
+    
