@@ -17,12 +17,24 @@
 // ============================================================
 
 // Your code here
+<<<<<<< HEAD
+const totalNumbers = 10;
+
+for (let count = 1; count <= totalNumbers; count++) {
+  // Including both 1 and 10 prints the complete requested range.
+  console.log(count);
+}
+    
+=======
 
 
-
+//loops over numbers 1 - 10 and outputs the even ones
 for (let i = 0; i <= 10; i++) {
     if (i % 2 == 0){
     console.log(i);
 }
 }
 
+
+
+>>>>>>> 9825db946be00e06922a596e43ee4df8acb5319e

@@ -1,58 +1,95 @@
 #!/usr/bin/env bash
 # ============================================================
-# CONFLICT LAB SETUP — run this BEFORE the session to rehearse,
-# or live to demo how a conflict is created.
-#
-# It creates two branches that edit the SAME line, so that
-# merging the second one produces a conflict you resolve on camera.
+# CONFLICT LAB SETUP
+# ------------------------------------------------------------
+# Run this script before the session to prepare a clean demo of
+# a merge conflict. It creates two branches that each edit the
+# same line in the same file, so the second merge creates a
+# visible conflict that can be resolved live.
 #
 # Usage:
-#   1. cd into a clone of your training repo
+#   1. cd into a clone of your training repository
 #   2. bash setup-conflict-demo.sh
-#   3. Follow the printed instructions to merge + resolve
+#   3. Follow the printed instructions to merge and resolve
 # ============================================================
-set -e
+
+set -euo pipefail
 
 FILE="conflict-lab.md"
 LINE="Our team's favorite programming language is:"
+BRANCH_PYTHON="team-python"
+BRANCH_JAVASCRIPT="team-javascript"
 
-echo "==> Making sure we're on main and up to date"
-git checkout main
-git pull origin main || true
+echo "==> Verifying repository state"
+git rev-parse --is-inside-work-tree >/dev/null
 
-echo "==> Branch 1: team-python"
-git checkout -b team-python
-sed -i "s/${LINE}.*/${LINE} Python/" "$FILE"
-git add "$FILE"
-git commit -m "Set favorite language to Python"
-git push origin team-python
+git fetch origin --prune
 
-echo "==> Back to main"
-git checkout main
+if git show-ref --verify --quiet refs/heads/main; then
+  git switch main
+else
+  git switch -c main --track origin/main || git switch -c main
+fi
 
-echo "==> Branch 2: team-javascript (edits the SAME line)"
-git checkout -b team-javascript
-sed -i "s/${LINE}.*/${LINE} JavaScript/" "$FILE"
-git add "$FILE"
-git commit -m "Set favorite language to JavaScript"
-git push origin team-javascript
+git pull --ff-only origin main || true
 
-echo ""
+# Clean up any old demo branches before creating fresh ones.
+for branch in "$BRANCH_PYTHON" "$BRANCH_JAVASCRIPT"; do
+  if git show-ref --verify --quiet "refs/heads/$branch"; then
+    git branch -D "$branch"
+  fi
+
+  if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+    git push origin --delete "$branch" >/dev/null 2>&1 || true
+  fi
+done
+
+if [[ ! -f "$FILE" ]]; then
+  printf '%s\n' "$LINE" > "$FILE"
+fi
+
+echo
 echo "============================================================"
-echo "SETUP COMPLETE. Now demo the conflict:"
-echo ""
-echo "  Option A — in the PR UI (recommended for interns):"
-echo "    1. Open a PR: team-python  -> main.  Merge it."
-echo "    2. Open a PR: team-javascript -> main."
-echo "       GitHub will say it can't merge automatically."
-echo "    3. Click 'Resolve conflicts', remove the <<<< ==== >>>>"
-echo "       markers, keep the final text, mark resolved, commit."
-echo ""
-echo "  Option B — in the CLI:"
-echo "    git checkout main && git pull"
-echo "    git merge team-python        # merges clean"
-echo "    git merge team-javascript    # CONFLICT!"
-echo "    # open conflict-lab.md, fix it, then:"
-echo "    git add conflict-lab.md"
-echo "    git commit -m 'Resolve conflict in conflict-lab.md'"
+echo "Branch setup"
+echo "============================================================"
+
+echo "==> Branch 1: ${BRANCH_PYTHON}"
+git switch -c "$BRANCH_PYTHON"
+sed -i "s|${LINE}.*|${LINE} Python|" "$FILE"
+git add "$FILE"
+git commit -m "Set favorite language to Python" || echo "  No commit needed for branch 1; continuing."
+git push -u origin "$BRANCH_PYTHON"
+
+echo
+echo "==> Returning to main"
+git switch main
+
+echo "==> Branch 2: ${BRANCH_JAVASCRIPT} (edits the same line)"
+git switch -c "$BRANCH_JAVASCRIPT"
+sed -i "s|${LINE}.*|${LINE} JavaScript|" "$FILE"
+git add "$FILE"
+git commit -m "Set favorite language to JavaScript" || echo "  No commit needed for branch 2; continuing."
+git push -u origin "$BRANCH_JAVASCRIPT"
+
+echo
+echo "============================================================"
+echo "SETUP COMPLETE — the repository is ready for the conflict demo."
+echo "============================================================"
+echo
+
+echo "Recommended flow (GitHub UI):"
+echo "  1. Open a pull request: ${BRANCH_PYTHON} -> main and merge it."
+echo "  2. Open a pull request: ${BRANCH_JAVASCRIPT} -> main."
+echo "     GitHub will report that the pull request cannot be merged automatically."
+echo "  3. Click 'Resolve conflicts', remove the conflict markers (<<<<<<<, =======, >>>>>>>),"
+echo "     keep the final wording you want, and commit the resolution."
+echo
+
+echo "CLI flow:"
+echo "  git switch main && git pull --ff-only origin main"
+echo "  git merge ${BRANCH_PYTHON}                 # merges cleanly"
+echo "  git merge ${BRANCH_JAVASCRIPT}            # CONFLICT!"
+echo "  # Edit conflict-lab.md, remove the conflict markers, and keep the final version."
+echo "  git add conflict-lab.md"
+echo "  git commit -m 'Resolve conflict in conflict-lab.md'"
 echo "============================================================"
