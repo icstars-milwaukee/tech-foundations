@@ -27,3 +27,12 @@
 // ============================================================
 
 // Your code here
+for (let row = 1; row <= 3; row++) {
+  let rowText = "";
+ 
+  for (let cell = 1; cell <= 3; cell++) {
+    rowText += row * cell + " ";
+  }
+ 
+  console.log(rowText);
+}
