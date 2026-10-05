@@ -40,3 +40,19 @@ for (let i = 1; i <= 30; i++) {
         console.log(i);
     }
 }
+const START_NUMBER = 1;
+const END_NUMBER = 30;
+const FIZZ_DIVISOR = 3;
+const BUZZ_DIVISOR = 5;
+
+for (let currentNumber = START_NUMBER; currentNumber <= END_NUMBER; currentNumber++) {
+    if (currentNumber % FIZZ_DIVISOR === 0 && currentNumber % BUZZ_DIVISOR === 0) {
+        console.log("FizzBuzz");
+    } else if (currentNumber % FIZZ_DIVISOR === 0) {
+        console.log("Fizz");
+    } else if (currentNumber % BUZZ_DIVISOR === 0) {
+        console.log("Buzz");
+    } else {
+        console.log(currentNumber);
+    }
+}
