@@ -28,18 +28,37 @@
 
 // Your code here
 
-const size = Number(process.argv[2]);
+const MIN_SIZE = 1;
+const MAX_SIZE = 12;
+const CELL_WIDTH = String(MAX_SIZE * MAX_SIZE).length + 1;
 
-if (!Number.isInteger(size) || size < 1 || size > 12) {
-  console.error("Please give a whole number from 1 to 12, e.g. node katas/kata3.js 5");
-  process.exit(1);
+// process.argv[2] is the first argument after the filename.
+// It arrives as text, so convert it to a number.
+const rawInput = process.argv[2];
+const size = Number(rawInput);
+
+// Guard clause: reject bad input up front so the rest of the
+if (!Number.isInteger(size) || size < MIN_SIZE || size > MAX_SIZE) {
+  console.error(
+    `Invalid size "${rawInput ?? ""}". ` +
+    `Please enter a whole number from ${MIN_SIZE} to ${MAX_SIZE}, ` +
+    `e.g. node katas/kata3.js 5`
+  );
+  process.exit(1); // non-zero exit code signals failure
 }
 
+// Outer loop = one pass per row.
 for (let row = 1; row <= size; row++) {
+  // Build the whole row as one string and print it once.
+  // This gives one console.log per row, not one per cell.
   let line = "";
+
+  // Inner loop = one pass per cell in the current row.
   for (let col = 1; col <= size; col++) {
-    line += row * col + " ";
+    const product = row * col;
+    line += String(product).padStart(CELL_WIDTH);
   }
+
   console.log(line);
 }
 // I used a nested loop to generate the multiplication table.
