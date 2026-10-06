@@ -16,23 +16,16 @@
 // Run it:  node katas/kata1.js
 // ============================================================
 
-// Your code here
-<<<<<<< HEAD
-const totalNumbers = 10;
+// We start at 2 because the first even number is 2, and we stop after
+// 10 values so the loop prints exactly the first 10 even numbers.
+const totalEvenNumbers = 10;
+const firstEvenNumber = 2;
 
-for (let count = 1; count <= totalNumbers; count++) {
-  // Including both 1 and 10 prints the complete requested range.
-  console.log(count);
-}
-    
-=======
-
-
-//loops over numbers 1 - 10 and outputs the even ones
-for (let i = 0; i <= 10; i++) {
-    if (i % 2 == 0){
-    console.log(i);
-}
+for (let count = 0; count < totalEvenNumbers; count++) {
+  // Even numbers always increase by 2, so each pass moves to the next one
+  // in the sequence without writing out every number by hand.
+  const evenNumber = firstEvenNumber + (count * 2);
+  console.log(evenNumber);
 }
 
 
