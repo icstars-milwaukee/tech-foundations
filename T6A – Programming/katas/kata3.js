@@ -27,3 +27,21 @@
 // ============================================================
 
 // Your code here
+
+const rawInput = process.argv[2];
+const size = Number(rawInput);
+
+// Guard clause for invalid input
+if (!Number.isInteger(size) || size < 1 || size > 12) {
+  console.error("Please provide a whole number between 1 and 12.");
+  process.exit(1);
+}
+
+// Generate multiplication table
+for (let row = 1; row <= size; row++) {
+  let rowString = "";
+  for (let col = 1; col <= size; col++) {
+    rowString += (row * col).toString().padStart(4, " ");
+  }
+  console.log(rowString);
+}

@@ -18,6 +18,7 @@
 
 // We start at 2 because the first even number is 2, and we stop after
 // 10 values so the loop prints exactly the first 10 even numbers.
+
 const totalEvenNumbers = 10;
 const firstEvenNumber = 2;
 
