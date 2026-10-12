@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ErrorResponse",
+  "description": "What POST /api/auth/login returns with status 400 or 401. Same shape for every error, so the frontend can handle all of them one way.",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "enum": ["MISSING_FIELDS", "INVALID_LOGIN"]
+        },
+        "message": {
+          "type": "string",
+          "description": "Safe to show to the user. Never says WHICH field was wrong."
+        }
+      },
+      "required": ["code", "message"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["error"],
+  "additionalProperties": false
+}

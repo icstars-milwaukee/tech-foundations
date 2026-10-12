@@ -1,0 +1,15 @@
+{
+  "name": "t7b-stories-to-design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T7B: From Stories to Design",
+  "scripts": {
+    "validate": "node scripts/validate-contract.js my-design/contract",
+    "validate:example": "node scripts/validate-contract.js examples/login/contract",
+    "check": "node scripts/check-design.js my-design",
+    "check:example": "node scripts/check-design.js examples/login"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
