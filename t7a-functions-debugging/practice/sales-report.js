@@ -39,38 +39,74 @@ const data = JSON.parse(raw);
 console.log("=== " + data.shop + " Weekly Sales Report ===");
 console.log("");
 
-// ----- Week 1 -----
-let week1Total = 0;
-for (let i = 0; i < data.week1.length; i++) {
-  week1Total = week1Total + data.week1[i];
-}
-const week1Average = week1Total / data.week1.length;
-let week1Best = data.week1[0];
-for (let i = 0; i < data.week1.length; i++) {
-  if (data.week1[i] > week1Best) {
-    week1Best = data.week1[i];
-  }
-}
-console.log("Week 1 total: $" + week1Total.toFixed(2));
-console.log("Week 1 average: $" + week1Average.toFixed(2));
-console.log("Week 1 best day: $" + week1Best.toFixed(2));
-console.log("");
+// // ----- Week 1 -----
+// let week1Total = 0;
+// for (let i = 0; i < data.week1.length; i++) {
+//   week1Total = week1Total + data.week1[i];
+// }
+// const week1Average = week1Total / data.week1.length;
+// let week1Best = data.week1[0];
+// for (let i = 0; i < data.week1.length; i++) {
+//   if (data.week1[i] > week1Best) {
+//     week1Best = data.week1[i];
+//   }
+// }
+// console.log("Week 1 total: $" + week1Total.toFixed(2));
+// console.log("Week 1 average: $" + week1Average.toFixed(2));
+// console.log("Week 1 best day: $" + week1Best.toFixed(2));
+// console.log("");
 
-// ----- Week 2 -----
-let week2Total = 0;
-for (let i = 0; i <= data.week2.length; i++) {
-  week2Total = week2Total + data.week2[i];
+// // ----- Week 2 -----
+// let week2Total = 0;
+// for (let i = 0; i < data.week2.length; i++) {
+//   week2Total = week2Total + data.week2[i];
+// }
+// const week2Average = week2Total / data.week2.length;
+// let week2Best = data.week2[0];
+// for (let i = 0; i < data.week2.length; i++) {
+//   if (data.week2[i] > week2Best) {
+//     week2Best = data.week2[i];
+//   }
+// }
+// console.log("Week 2 total: $" + week2Total.toFixed(2));
+// console.log("Week 2 average: $" + week2Average.toFixed(2));
+// console.log("Week 2 best day: $" + week2Best.toFixed(2));
+// console.log("");
+
+// console.log("Two-week total: $" + (week1Total + week2Total).toFixed(2));
+
+
+// Function 1: Calculates total, average, and best day for any array of numbers
+function getWeekStats(days) {
+  const total = days.reduce((sum, val) => sum + val, 0);
+  const average = total / days.length;
+  const best = Math.max(...days);
+
+  return { total, average, best };
 }
-const week2Average = week2Total / data.week1.length;
-let week2Best = data.week2[0];
-for (let i = 0; i < data.week2.length; i++) {
-  if (data.week2[i] > week2Best) {
-    week2Best = data.week2[i];
-  }
+
+// Function 2: Processes and logs the weekly summary for a given week name and dataset
+function printWeekSummary(weekLabel, weekData) {
+  const stats = getWeekStats(weekData);
+
+  console.log(`${weekLabel} total: $${stats.total.toFixed(2)}`);
+  console.log(`${weekLabel} average: $${stats.average.toFixed(2)}`);
+  console.log(`${weekLabel} best day: $${stats.best.toFixed(2)}`);
+  console.log("");
+
+  return stats.total;
 }
-console.log("Week 2 total: $" + week2Total.toFixed(2));
-console.log("Week 2 average: $" + week2Average.toFixed(2));
-console.log("Week 2 best day: $" + week2Best.toFixed(2));
-console.log("");
+
+// ----- Execution -----
+const week1Total = printWeekSummary("Week 1", data.week1);
+const week2Total = printWeekSummary("Week 2", data.week2);
 
 console.log("Two-week total: $" + (week1Total + week2Total).toFixed(2));
+
+
+function addNumbers(numA, numB, numC, numD, wordA) {;
+  console.log("The sum is: " + (numA + numB + numC + numD));
+  console.log("The word is: " + wordA);
+}
+
+addNumbers(5, 10, 15, 20, "Hello");
