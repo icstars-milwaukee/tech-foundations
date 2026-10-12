@@ -40,34 +40,61 @@ console.log("=== " + data.shop + " Weekly Sales Report ===");
 console.log("");
 
 // ----- Week 1 -----
-let week1Total = 0;
-for (let i = 0; i < data.week1.length; i++) {
-  week1Total = week1Total + data.week1[i];
-}
-const week1Average = week1Total / data.week1.length;
-let week1Best = data.week1[0];
-for (let i = 0; i < data.week1.length; i++) {
-  if (data.week1[i] > week1Best) {
-    week1Best = data.week1[i];
+function calculateWeekStats(weekData) {
+  let total = 0;
+  for (let i = 0; i < weekData.length; i++) {
+    total = total + weekData[i];
   }
+  const average = total / weekData.length;
+  let best = weekData[0];
+  for (let i = 0; i < weekData.length; i++) {
+    if (weekData[i] > best) {
+      best = weekData[i];
+    }
+  }
+  return { total, average, best }; 
 }
+
+// let week1Total = 0;
+// for (let i = 0; i < data.week1.length; i++) {
+//   week1Total = week1Total + data.week1[i];
+// }
+// const week1Average = week1Total / data.week1.length;
+// let week1Best = data.week1[0];
+// for (let i = 0; i < data.week1.length; i++) {
+//   if (data.week1[i] > week1Best) {
+//     week1Best = data.week1[i];
+//   }
+// }
+
+const week1Stats = calculateWeekStats(data.week1);
+let week1Total = week1Stats.total;
+let week1Average = week1Stats.average;
+let week1Best = week1Stats.best;
+
 console.log("Week 1 total: $" + week1Total.toFixed(2));
 console.log("Week 1 average: $" + week1Average.toFixed(2));
 console.log("Week 1 best day: $" + week1Best.toFixed(2));
 console.log("");
 
 // ----- Week 2 -----
-let week2Total = 0;
-for (let i = 0; i <= data.week2.length; i++) {
-  week2Total = week2Total + data.week2[i];
-}
-const week2Average = week2Total / data.week1.length;
-let week2Best = data.week2[0];
-for (let i = 0; i < data.week2.length; i++) {
-  if (data.week2[i] > week2Best) {
-    week2Best = data.week2[i];
-  }
-}
+// let week2Total = 0;
+// for (let i = 0; i <= data.week2.length; i++) {
+//   week2Total = week2Total + data.week2[i];
+// }
+// const week2Average = week2Total / data.week1.length;
+// let week2Best = data.week2[0];
+// for (let i = 0; i < data.week2.length; i++) {
+//   if (data.week2[i] > week2Best) {
+//     week2Best = data.week2[i];
+//   }
+// }
+const week2Stats = calculateWeekStats(data.week2);
+
+let week2Total = week2Stats.total;
+let week2Average = week2Stats.average;
+let week2Best = week2Stats.best;
+
 console.log("Week 2 total: $" + week2Total.toFixed(2));
 console.log("Week 2 average: $" + week2Average.toFixed(2));
 console.log("Week 2 best day: $" + week2Best.toFixed(2));
