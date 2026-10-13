@@ -45,6 +45,7 @@ Each card has the story, what "done" looks like (acceptance criteria), and a nud
 
 **Think about:** "IT is notified" is a system part too. What is it? Where does the ticket number come from?
 
+file:///C:/Users/CortezHale/Downloads/Dez%20&%20Tez%20T7b%20Card%20C.pdf 
 ---
 
 ## Card D: RSVP to a Cohort Event
