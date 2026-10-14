@@ -40,8 +40,9 @@ console.log("=== " + data.shop + " Weekly Sales Report ===");
 console.log("");
 
 // ----- Week 1 -----
+// FIX: use < so we don't go past the last day
 let week1Total = 0;
-for (let i = 0; i < data.week1.length; i++) {
+for (let i = 0; i < data.week2.length; i++) {
   week1Total = week1Total + data.week1[i];
 }
 const week1Average = week1Total / data.week1.length;
@@ -61,7 +62,8 @@ let week2Total = 0;
 for (let i = 0; i <= data.week2.length; i++) {
   week2Total = week2Total + data.week2[i];
 }
-const week2Average = week2Total / data.week1.length;
+// FIX: use week 2 days, not week 1
+const week2Average = week2Total / data.week2.length;
 let week2Best = data.week2[0];
 for (let i = 0; i < data.week2.length; i++) {
   if (data.week2[i] > week2Best) {
