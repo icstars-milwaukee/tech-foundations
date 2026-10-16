@@ -13,3 +13,4 @@ Example:
 - Don't be scared to ask for details - dj
 - We make sure that everyone's ideas are heard and valued by everyone.-Ventura
 - may the tech be with you ~ Cortez
+- Do the best you can do, learn more, and forget the rest. Q
