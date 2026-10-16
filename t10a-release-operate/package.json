@@ -1,0 +1,15 @@
+{
+  "name": "t10a-release-operate",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T10A: Release & Operate",
+  "scripts": {
+    "preflight": "node tools/preflight.js",
+    "app": "node sample-app/server.js",
+    "release-check": "node tools/release-check.js",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

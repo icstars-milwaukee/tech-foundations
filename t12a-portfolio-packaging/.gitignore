@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+.env
+
+# The weak example commits a (fake) .env ON PURPOSE, as a bad example.
+!examples/weak-repo/.env

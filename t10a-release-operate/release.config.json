@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:5000",
+  "healthPath": "/health",
+  "endpoints": ["/api/events", "/api/rsvps"],
+  "requests": 60,
+  "thresholds": {
+    "maxErrorRatePct": 2,
+    "maxP95LatencyMs": 300
+  }
+}

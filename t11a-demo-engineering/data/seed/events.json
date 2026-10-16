@@ -1,0 +1,8 @@
+{
+  "savedAt": "2026-11-05T18:00:00.000Z",
+  "events": [
+    { "id": "evt-303", "title": "Alumni Panel: First Year in Tech", "date": "2026-10-22", "going": 52 },
+    { "id": "evt-302", "title": "Resume Lab", "date": "2026-10-28", "going": 20 },
+    { "id": "evt-301", "title": "Sprint 2 Demo Day", "date": "2026-11-06", "going": 41 }
+  ]
+}

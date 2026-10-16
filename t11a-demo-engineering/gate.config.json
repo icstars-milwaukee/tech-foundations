@@ -1,0 +1,10 @@
+{
+  "description": "Quality gate for the T11A sandbox. Copy this file into your project and point it at YOUR app. Paths are relative to this file.",
+  "env": { "file": ".env", "required": ["API_BASE_URL", "DEMO_API_KEY", "DEMO_MODE"] },
+  "data": { "file": "data/seed/events.json", "arrayPath": "events", "minRecords": 3 },
+  "credentials": { "url": "http://localhost:4000/api/secure/ping", "header": "x-api-key", "envVar": "DEMO_API_KEY" },
+  "health": [
+    { "name": "Demo app", "url": "http://localhost:3000/health" },
+    { "name": "API (through proxy)", "url": "http://localhost:4100/api/health" }
+  ]
+}

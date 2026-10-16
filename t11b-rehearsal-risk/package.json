@@ -1,0 +1,12 @@
+{
+  "name": "t11b-rehearsal-risk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T11B: Rehearsal & Risk Management",
+  "scripts": {
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

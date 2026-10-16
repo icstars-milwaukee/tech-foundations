@@ -1,0 +1,18 @@
+{
+  "name": "t9a-apis-101",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T9A: APIs 101",
+  "scripts": {
+    "mock": "node mock-server/server.js",
+    "stage1": "node practice/stage1-mock.js",
+    "stage1:flaky": "node practice/stage1-mock.js --flaky",
+    "stage2": "node practice/stage2-public.js",
+    "stage3": "node practice/stage3-auth.js",
+    "test": "node --test test/api.test.js",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

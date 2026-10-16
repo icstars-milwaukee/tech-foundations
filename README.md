@@ -1,5 +1,7 @@
 # Tech Foundations — The Technical Curriculum Track
 
+**Interns: browse every session at https://icstars-milwaukee.github.io/tech-foundations/**
+
 The living notebook of the Tech Foundations track: the hands-on technical problem
 and answering it — discovery, requirements, business analysis, solution
 cycle goes deep on. Every cycle documents its
@@ -40,3 +42,9 @@ A lesson is complete when its guide is filled through the Summary:
    skip a dead end because of your entry?
 3. Never commit secrets, personal data, client material, or big binaries
    (link those from Drive).
+
+## The website (GitHub Pages)
+
+`index.html` + `site/` turn the session READMEs into a simple site for interns.
+To add a session to it, add one entry to `site/sessions.js`. Nothing to build:
+the page reads each `<folder>/README.md` straight from the repo.

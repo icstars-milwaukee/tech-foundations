@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SurveyRecord",
+  "description": "STRETCH: one clean survey record. Finish the TODO fields, then run: npm run pipeline:validate",
+  "type": "object",
+  "properties": {
+    "full_name": { "type": "string", "minLength": 1 },
+    "submitted_on": { "type": "string", "format": "date" }
+  },
+  "required": ["full_name", "submitted_on"],
+  "additionalProperties": true
+}

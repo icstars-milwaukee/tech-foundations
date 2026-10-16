@@ -1,0 +1,14 @@
+{
+  "name": "t9b-sprint2-rehearsal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T9B: Sprint 2 Rehearsal & Risks",
+  "scripts": {
+    "risks": "node scripts/risks.js RISK_REGISTER.md",
+    "risks:example": "node scripts/risks.js examples/RISK_REGISTER.example.md",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

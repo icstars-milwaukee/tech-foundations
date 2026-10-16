@@ -1,0 +1,48 @@
+{
+  "info": {
+    "name": "T9A APIs 101 (CohortHub)",
+    "description": "Import into Postman: File > Import. Set the collection variable apiKey to the key the mock server prints. Never save a real key in a file you commit.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:4000" },
+    { "key": "apiKey", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Stage 1 - Health check",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/health" }
+    },
+    {
+      "name": "Stage 1 - Events",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/events" }
+    },
+    {
+      "name": "Stage 1 - Events (flaky: send 3 times)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/events?flaky=1" }
+    },
+    {
+      "name": "Stage 1 - Not found (404)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/nope" }
+    },
+    {
+      "name": "Stage 2 - Milwaukee weather (Open-Meteo)",
+      "request": {
+        "method": "GET",
+        "url": "https://api.open-meteo.com/v1/forecast?latitude=43.04&longitude=-87.91&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FChicago"
+      }
+    },
+    {
+      "name": "Stage 3 - Attendance (needs apiKey)",
+      "request": {
+        "method": "GET",
+        "header": [{ "key": "x-api-key", "value": "{{apiKey}}" }],
+        "url": "{{baseUrl}}/api/secure/attendance"
+      }
+    },
+    {
+      "name": "Stage 3 - Attendance with NO key (401)",
+      "request": { "method": "GET", "url": "{{baseUrl}}/api/secure/attendance" }
+    }
+  ]
+}
