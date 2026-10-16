@@ -24,3 +24,4 @@ We are a hopeful and caring community at IC Stars, and we support one another wi
 - Don't be scared to ask for details - dj
 - We make sure that everyone's ideas are heard and valued by everyone.-Ventura
 - may the tech be with you ~ Cortez
+- Leading with respect can help any team thrive.- Desmond Scott
