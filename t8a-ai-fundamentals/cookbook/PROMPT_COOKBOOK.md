@@ -1,6 +1,6 @@
 # Prompt Cookbook
 
-**Name:** 
+**Name:**  Ventura Perez Del Castillo DJ Moore 
 
 A recipe is a prompt you can **reuse**: same structure, new ingredients. Write prompts you'll actually use for studying, writing, code, or your sprint project.
 

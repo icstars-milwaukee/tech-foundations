@@ -1,6 +1,6 @@
 # Baseline vs AI
 
-**Name:** 
+**Name:** Ventura Perez Del Castillo DJ Moore
 
 **The task:** Turn `standup-notes.md` into a list of action items (Owner, Task, Due date).
 
