@@ -1,6 +1,6 @@
 # Responsible AI Use Checklist
 
-**Name:** 
+**Name:** Jose and Fernando
 
 Run through this list **every time** you use AI output for something that matters: code you'll commit, writing someone else will read, a decision, a demo.
 
@@ -29,6 +29,6 @@ Run through this list **every time** you use AI output for something that matter
 
 Add **at least two** items from today's case studies. Make each one something you can actually check off. "Be careful" isn't checkable. "Every statistic has a source I opened" is.
 
-- [ ] 
-- [ ] 
+- [ ] If you can ask an expert, ask an expert to cross reference your output.
+- [ ] Ask AI to cite its sources so you can validate the output.
 - [ ] 
