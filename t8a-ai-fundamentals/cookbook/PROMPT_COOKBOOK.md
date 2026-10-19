@@ -67,10 +67,12 @@ Here is my SQL query:
 ```text
 TODO
 ```
-
-- **Sample result (short):** 
-- **What I checked:** 
-- **Risks to watch:** 
+**Sample result (short):** Think about a weather app on your phone. The app doesn’t have its own weather satellites. Instead, it asks a weather service, “What’s the forecast for Brookfield?” The weather service sends back the answer, and the app displays it nicely. That request and response happens through an API. Examples of what endpoints might look like for a weather service:
+/forecast returns the weather forecast
+/alerts returns severe weather warnings
+/history returns past weather data
+- **What I checked:** checked another website for fact checking 
+- **Risks to watch:** risk could include the AI not having the full context therefore the answer/output could vary.  
 - **Peer test:** 
 
 ## Recipe 3
