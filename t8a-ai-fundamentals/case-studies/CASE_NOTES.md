@@ -15,6 +15,5 @@ Your group fills in **one** case. Use your own words. Be ready to share in 60 se
 
 Write one lesson from each case you hear.
 
-- **Case:** 
-- **Case:** 
-- **Case:** 
+- **Case: 3**
+    In the amazon case the problem came from being trained on existing company data, which already contained extesnsive hiring bias, Learning from biased datasets will lead the model to retain the same bias.
