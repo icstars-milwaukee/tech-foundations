@@ -25,7 +25,7 @@ Set a timer. Write the action items by hand. Stop at 5 minutes even if you aren'
 
 Before anything goes near an AI tool, remove private details. List each one and what you replaced it with (or "removed").
 
-- **Private details I removed:** N/A
+- **Private details I removed:** The dentist appointment detail.
 - **Did removing them change what the AI can do? How?:** Nah.
 
 ## 3. AI version
