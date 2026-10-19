@@ -60,9 +60,9 @@ Here is my SQL query:
 
 ## Recipe 2
 
-- **Name:** 
-- **Goal:** 
-- **Prompt:**
+- **Name:** APIs and Endpoints 
+- **Goal:** Understand APIs and Endpoints in plain terms
+- **Prompt:** Can you please explain APIs and endpoints to me like i'm learning what it is for the first time
 
 ```text
 TODO
