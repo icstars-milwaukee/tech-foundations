@@ -1,6 +1,6 @@
 # Responsible AI Use Checklist
 
-**Name:** 
+**Name:** Desmond & Luke
 
 Run through this list **every time** you use AI output for something that matters: code you'll commit, writing someone else will read, a decision, a demo.
 
@@ -29,6 +29,6 @@ Run through this list **every time** you use AI output for something that matter
 
 Add **at least two** items from today's case studies. Make each one something you can actually check off. "Be careful" isn't checkable. "Every statistic has a source I opened" is.
 
-- [ ] 
-- [ ] 
+- [ ] I tested the AI-generated code myself before using it in a project.
+- [ ] I compared the AI's answer with at least one other source (documentation, website, or another AI tool).
 - [ ] 
