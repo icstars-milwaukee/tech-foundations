@@ -14,7 +14,7 @@ Fill this in **while** you work. Use `out/evaluation-report.md` and `out/provena
 
 ## 2. Guardrails
 
-- **Personal data removed before prompting (what + how):** Names and emails were removed.
+- **Personal data removed before prompting (what + how):**
 - **Fields never sent to AI at all:** 
 - **Provenance: where the data came from:** 
 - **Provenance: who owns it, and do we have permission to use it:** 
