@@ -27,11 +27,11 @@ Score each from **1** (poor) to **3** (strong). Evidence = a ticket ID, a number
 
 | Criterion                                                 | Baseline (IT lead) | AI  | Evidence |
 | --------------------------------------------------------- | ------------------ | --- | -------- |
-| **Accuracy**: right category and priority?            |                    |     |          |
-| **Completeness**: every ticket handled?                   |                    |     |          |
-| **Bias risk**: any ticket judged by _how_ it was written? |                    |     |          |
-| **Privacy risk**: could personal data leak?               |                    |     |          |
-| **Time saved** (minutes, including your review time)      |                    |     |          |
+| **Accuracy**: right category and priority?  |            3        |  3   |     3     |
+| **Completeness**: every ticket handled?                   |      3              |   2  |       2   |
+| **Bias risk**: any ticket judged by _how_ it was written? |            2        |   2  |    2      |
+| **Privacy risk**: could personal data leak?               |          1          |    3 |    2      |
+| **Time saved** (minutes, including your review time)      |          1          | 3    |  3        |
 
 ## 4. Decisions, ticket by ticket
 
