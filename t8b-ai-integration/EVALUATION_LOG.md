@@ -48,7 +48,6 @@ At least **5 tickets**. Start with every ticket where AI and the baseline disagr
 | T-107 |  |  | Accept | All information is correct and useful. |
 | T-112 |  |  | Reject | The AI is missing |
 | T-103   |         |               | Reject   | Urgent because whole team impacted, AI said normal |
-|        |         |               |          |                                                    |
 
 ## 5. Overall decision
 
