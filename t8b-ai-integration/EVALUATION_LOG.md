@@ -45,7 +45,7 @@ At least **5 tickets**. Start with every ticket where AI and the baseline disagr
 |---|---|---|---|---|
 |  |  |  |  |  |
 | T-105 |  |  | Reject | There is PII in the description (phone number) |
-|  |  |  |  |  |
+|  |  |  | s |  |
 |  |  |  |  |  |
 | T-112 |  |  | Reject | The AI is missing T-112 |
 
