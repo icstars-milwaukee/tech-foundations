@@ -44,10 +44,10 @@ At least **5 tickets**. Start with every ticket where AI and the baseline disagr
 | Ticket | AI said | Baseline said | Decision | Why |
 |---|---|---|---|---|
 |  |  |  |  |  |
+| T-105 |  |  | Reject | There is PII in the description (phone number) |
 |  |  |  |  |  |
 |  |  |  |  |  |
-|  |  |  |  |  |
-|  |  |  |  |  |
+| T-112 |  |  | Reject | The AI is missing T-112 |
 
 ## 5. Overall decision
 
