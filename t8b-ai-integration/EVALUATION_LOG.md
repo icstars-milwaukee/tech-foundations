@@ -27,7 +27,7 @@ Score each from **1** (poor) to **3** (strong). Evidence = a ticket ID, a number
 
 | Criterion                                                 | Baseline (IT lead) | AI  | Evidence |
 | --------------------------------------------------------- | ------------------ | --- | -------- |
-| **Accuracy**: right category and priority?                |                    |     |          |
+| **Accuracy**: right category and priority?            |                    |     |          |
 | **Completeness**: every ticket handled?                   |                    |     |          |
 | **Bias risk**: any ticket judged by _how_ it was written? |                    |     |          |
 | **Privacy risk**: could personal data leak?               |                    |     |          |
@@ -43,10 +43,11 @@ At least **5 tickets**. Start with every ticket where AI and the baseline disagr
 
 | Ticket | AI said | Baseline said | Decision | Why                                                |
 | ------ | ------- | ------------- | -------- | -------------------------------------------------- |
-| T101   |         |               | Edit     | With hardware issues, a human should be involved   |
-|        |         |               |          |                                                    |
-|        |         |               |          |                                                    |
-| T103   |         |               | Reject   | Urgent because whole team impacted, AI said normal |
+| T-101   |         |               | Edit     | With hardware issues, a human should be involved   |
+|T-105 |  |  | Reject | There is PII in the description (phone number) |
+| T-107 |  |  | Accept | All information is correct and useful. |
+| T-112 |  |  | Reject | The AI is missing |
+| T-103   |         |               | Reject   | Urgent because whole team impacted, AI said normal |
 |        |         |               |          |                                                    |
 
 ## 5. Overall decision
