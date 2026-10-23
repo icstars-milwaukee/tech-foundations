@@ -54,9 +54,13 @@
           })
           .join("");
         const note = w.note ? `<p class="week-note">${esc(w.note)}</p>` : "";
-        const milestone = w.milestone
-          ? `<div class="milestone"><strong>End of week ${w.week}: ${esc(w.milestone.title)}</strong><span>${esc(w.milestone.detail)}</span></div>`
-          : "";
+        const m = w.milestone;
+        const milestoneBody = m ? `<strong>End of week ${w.week}: ${esc(m.title)}</strong><span>${esc(m.detail)}</span>` : "";
+        const milestone = !m
+          ? ""
+          : m.path
+            ? `<a class="milestone" href="${route(m.path)}">${milestoneBody}<span class="milestone-link">See the tasks and rubric →</span></a>`
+            : `<div class="milestone">${milestoneBody}</div>`;
         return `<section class="week" id="week-${w.week}">
           <div class="week-head"><span class="week-num">Week ${w.week}</span><h2>${esc(w.title)}</h2></div>
           ${cards ? `<div class="cards">${cards}</div>` : ""}${note}${milestone}
