@@ -23,7 +23,15 @@
 //   column's values. It's the team name. Name it "team".
 // ---------------------------------------------------------------------
 function fixHeaders(headers) {
-  return headers;
+  return headers.map((header) => {
+    const normalized = String(header || "")
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "");
+    if (normalized === "") return "team";
+    return normalized === "team_name" ? "team" : normalized;
+  });
 }
 
 // ---------------------------------------------------------------------
@@ -40,7 +48,8 @@ function fixHeaders(headers) {
 //   that was already fine would break it.
 // ---------------------------------------------------------------------
 function fixEncoding(text) {
-  return text;
+  if (!/[ÃÂ]/.test(text)) return text;
+  return Buffer.from(text, "latin1").toString("utf8");
 }
 
 // ---------------------------------------------------------------------
@@ -52,7 +61,10 @@ function fixEncoding(text) {
 //   NaN quietly breaks every average it touches.
 // ---------------------------------------------------------------------
 function toNumber(value) {
-  return value;
+  const match = String(value ?? "").match(/-?\d+(?:\.\d+)?/);
+  if (!match) return null;
+  const number = Number(match[0]);
+  return Number.isFinite(number) ? number : null;
 }
 
 // ---------------------------------------------------------------------
@@ -61,7 +73,10 @@ function toNumber(value) {
 //   Ignore upper/lower case and extra spaces. Anything else -> null.
 // ---------------------------------------------------------------------
 function toBoolean(value) {
-  return value;
+  const normalized = String(value ?? "").trim().toLowerCase();
+  if (["yes", "y", "true"].includes(normalized)) return true;
+  if (["no", "n", "false"].includes(normalized)) return false;
+  return null;
 }
 
 // ---------------------------------------------------------------------
@@ -71,7 +86,9 @@ function toBoolean(value) {
 //   Keep the kept rows in the same order they appear in the file.
 // ---------------------------------------------------------------------
 function dedupeByName(records) {
-  return records;
+  const lastIndexByName = new Map();
+  records.forEach((record, index) => lastIndexByName.set(record.full_name, index));
+  return records.filter((record, index) => lastIndexByName.get(record.full_name) === index);
 }
 
 // ---------------------------------------------------------------------
@@ -129,3 +146,4 @@ module.exports = {
   toISODate,
   cleanRecord,
 };
+ 
