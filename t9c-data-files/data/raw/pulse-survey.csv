@@ -1,15 +1,11 @@
-﻿Timestamp, Full Name ,,Hours Coding This Week,Confidence (1-5),Laptop OK?,Comments
-10/14/2026 9:05:12,Maya Brooks,Atlas,12,4,Yes,
-10/14/2026 9:07:40,JosÃ© Ramos,Beacon,10 hrs,3,yes,"Loved the API session, but need more time"
-2026-10-14 09:15,Keisha Owens ,Atlas,N/A,5,Y,
-10/14/2026 9:20:03,ZoÃ« Hart,Comet,8.5,3/5,No,Laptop fan is really loud
-Oct 14 2026,andre simmons,Beacon,15,four,n,
-
-10/14/2026 9:31:55,Luis Ortega,Comet,"6 ",2,TRUE,"Struggling with async
-would like a clinic"
-10/14/2026 9:40:10,Priya Raman,Atlas,9,4,yes,
-10/14/2026 10:02:00,Maya Brooks,Atlas,14,4,Yes,"Updated: forgot Saturday"
-10/14/2026 10:05:30,DeShawn Price,Comet,,3,no,Need Node 18
-10/14/2026 10:11:45,Nia Carter,Beacon,11,5,Yes,
-10/14/2026 10:12:02,Nia Carter,Beacon,11,5,Yes,
-10/14/2026 10:20:00,Gabriela Ruiz,,7,4,yes,
+﻿Timestamp,Full Name,Team Name,Hours Coding This Week,Confidence (1-5),Laptop OK?,Comments,Data Quality Notes
+2026-10-14 09:05:12,Maya Brooks,Atlas,14,4,Yes,"Updated: forgot Saturday","Kept later updated record; earlier 12-hour record superseded."
+2026-10-14 09:07:40,José Ramos,Beacon,10,3,Yes,"Loved the API session, but need more time","Corrected character encoding; normalized '10 hrs' to 10 and 'yes' to 'Yes'."
+2026-10-14 09:15:00,Keisha Owens,Atlas,,5,Yes,No comments,"Trimmed name whitespace; hours originally N/A, so left blank; normalized 'Y' to 'Yes'."
+2026-10-14 09:20:03,Zoë Hart,Comet,8.5,3,No,"Laptop fan is really loud","Corrected character encoding; normalized confidence '3/5' to 3; normalized 'No' capitalization."
+2026-10-14,Andre Simmons,Beacon,15,4,No,No comments,"Original name 'andre simmons' standardized to 'Andre Simmons' but name not separately retained in this CSV row; timestamp had date only; confidence 'four' normalized to 4; 'n' normalized to 'No'."
+2026-10-14 09:31:55,Luis Ortega,Comet,6,2,Yes,"Struggling with async; would like a clinic","Trimmed whitespace from hours; laptop value TRUE preserved because its meaning may need confirmation."
+2026-10-14 09:40:10,Priya Raman,Atlas,9,4,Yes,No comments,"Normalized laptop response to 'Yes'."
+2026-10-14 10:05:30,DeShawn Price,Comet,,3,No,"Need Node 18","Hours were missing; left blank; normalized laptop response to 'No'."
+2026-10-14 10:11:45,Nia Carter,Beacon,11,5,Yes,No comments,"Duplicate entry removed; retained one copy of the identical record."
+2026-10-14 10:20:00,Gabriela Ruiz,,7,4,Yes,No comments,"Team name missing; left blank; normalized laptop response to 'Yes'."
