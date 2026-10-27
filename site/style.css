@@ -113,6 +113,9 @@ main { outline: none; max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px
   background: var(--warn-soft); border: 1px solid var(--warn-border);
   display: flex; flex-direction: column; gap: 2px; font-size: 14px;
 }
+a.milestone { color: var(--text); text-decoration: none; transition: border-color 0.15s; }
+a.milestone:hover { border-color: var(--accent); }
+.milestone-link { margin-top: 4px; font-weight: 600; color: var(--accent); }
 
 /* ---------- document pages ---------- */
 .doc-layout { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 40px; }
