@@ -1,0 +1,80 @@
+{
+  "source": "data\\raw\\pulse-survey.csv",
+  "generatedAt": "2026-10-27T18:50:29.504Z",
+  "recordCount": 12,
+  "summaryByTeam": {},
+  "records": [
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    },
+    {
+      "submitted_on": null,
+      "full_name": "",
+      "team": null,
+      "comments": null
+    }
+  ]
+}
