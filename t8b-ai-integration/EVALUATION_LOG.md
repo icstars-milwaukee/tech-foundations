@@ -41,13 +41,13 @@ At least **5 tickets**. Start with every ticket where AI and the baseline disagr
 - **Edit:** close, but a person has to fix it.
 - **Reject:** wrong or unsafe. Don't use it.
 
-| Ticket | AI said | Baseline said | Decision | Why                                                |
-| ------ | ------- | ------------- | -------- | -------------------------------------------------- |
-| T-101   |         |               | Edit     | With hardware issues, a human should be involved   |
-|T-105 |  |  | Reject | There is PII in the description (phone number) |
-| T-107 |  |  | Accept | All information is correct and useful. |
-| T-112 |  |  | Reject | The AI is missing T-112 |
-| T-103   |         |               | Reject   | Urgent because whole team impacted, AI said normal |
+| Ticket | AI said | Baseline said | Decision | Why |
+|---|---|---|---|---|
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
 
 ## 5. Overall decision
 
