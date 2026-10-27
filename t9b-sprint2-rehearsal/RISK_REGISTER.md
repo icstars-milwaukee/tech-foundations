@@ -1,6 +1,6 @@
 # Risk Register
 
-**Team:** 
+**Team:** TEQ Solutions
 
 A risk is something that **might** go wrong. Write it down while it's still cheap to fix.
 
@@ -17,8 +17,8 @@ Run `npm run risks` to sort it by score (Probability × Impact) so you work on t
 
 | ID | Risk | Probability | Impact | Mitigation | Owner | Status | Raised by |
 |---|---|---|---|---|---|---|---|
-| R-1 |  |  |  |  |  |  |  |
-| R-2 |  |  |  |  |  |  |  |
+| R-1 | Lost Internet | Medium | High | Hotspot on standby | Entire Team | Open | Luke |
+| R-2 | Website Crashing | Low | High | Ensure server host is connected and fully charged | Ventura | Open | Luke |
 | R-3 |  |  |  |  |  |  |  |
 | R-4 |  |  |  |  |  |  |  |
 | R-5 |  |  |  |  |  |  |  |
