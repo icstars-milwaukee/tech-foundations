@@ -2,79 +2,102 @@
 import { useState } from "react";
 import "./index.css";
 
+const buttons = [
+  ["C", "⌫", "÷", "×"],
+  ["7", "8", "9", "−"],
+  ["4", "5", "6", "+"],
+  ["1", "2", "3", "="],
+  ["0", ".", "", ""],
+];
+
 export default function App() {
   const [display, setDisplay] = useState("0");
-  const [previous, setPrevious] = useState(null);
+  const [storedValue, setStoredValue] = useState(null);
   const [operator, setOperator] = useState(null);
-  const [fresh, setFresh] = useState(false);
+  const [startNewNumber, setStartNewNumber] = useState(false);
 
-  function click(value) {
+  function calculate(a, b, op) {
+    if (op === "+") return a + b;
+    if (op === "−") return a - b;
+    if (op === "×") return a * b;
+    if (op === "÷") return b === 0 ? "Error" : a / b;
+    return b;
+  }
+
+  function handleClick(value) {
     if (value === "C") {
       setDisplay("0");
-      setPrevious(null);
+      setStoredValue(null);
       setOperator(null);
-      setFresh(false);
+      setStartNewNumber(false);
       return;
     }
 
     if (value === "⌫") {
-      setDisplay(display.length > 1 ? display.slice(0, -1) : "0");
+      if (startNewNumber || display === "Error") {
+        setDisplay("0");
+        setStartNewNumber(false);
+      } else {
+        setDisplay(display.length > 1 ? display.slice(0, -1) : "0");
+      }
       return;
     }
 
     if (["+", "−", "×", "÷"].includes(value)) {
-      setPrevious(Number(display));
+      if (display === "Error") return;
+      const current = Number(display);
+
+      if (operator && storedValue !== null && !startNewNumber) {
+        const result = calculate(storedValue, current, operator);
+        if (!Number.isFinite(result)) {
+          setDisplay("Error");
+          setStoredValue(null);
+          setOperator(null);
+          return;
+        }
+        setDisplay(String(Number(result.toPrecision(10))));
+        setStoredValue(result);
+      } else {
+        setStoredValue(current);
+      }
+
       setOperator(value);
-      setFresh(true);
+      setStartNewNumber(true);
       return;
     }
 
     if (value === "=") {
-      if (previous === null || !operator) return;
-
-      const a = previous;
-      const b = Number(display);
-      let result;
-
-      if (operator === "+") result = a + b;
-      if (operator === "−") result = a - b;
-      if (operator === "×") result = a * b;
-      if (operator === "÷") result = b === 0 ? "Error" : a / b;
-
-      setDisplay(
-        typeof result === "number" && Number.isFinite(result)
-          ? String(Number(result.toPrecision(10)))
-          : String(result)
-      );
-      setPrevious(null);
-      setOperator(null);
-      setFresh(true);
+      if (operator && storedValue !== null && display !== "Error") {
+        const result = calculate(storedValue, Number(display), operator);
+        setDisplay(
+          Number.isFinite(result)
+            ? String(Number(result.toPrecision(10)))
+            : "Error"
+        );
+        setStoredValue(null);
+        setOperator(null);
+        setStartNewNumber(true);
+      }
       return;
     }
 
-    if (value === "." && !fresh && display.includes(".")) return;
+    if (display === "Error") setDisplay("0");
 
-    if (fresh) {
+    if (value === "." && !startNewNumber && display.includes(".")) return;
+
+    if (startNewNumber) {
       setDisplay(value === "." ? "0." : value);
-      setFresh(false);
+      setStartNewNumber(false);
     } else {
       setDisplay(
         value === "."
-          ? display + "."
+          ? display === "Error" ? "0." : display + "."
           : display === "0" || display === "Error"
             ? value
             : display + value
       );
     }
   }
-
-  const rows = [
-    ["C", "⌫", "÷", "×"],
-    ["7", "8", "9", "−"],
-    ["4", "5", "6", "+"],
-    ["1", "2", "3", "="],
-    ["0", ".", "", ""],
-  ];
 
   return (
     <main className="page">
@@ -84,27 +107,30 @@ export default function App() {
         <p>A little math, a lot of purple.</p>
       </header>
 
-      <section className="calculator">
-        <div className="display">{display}</div>
+      <section className="calculator" aria-label="Calculator">
+        <div className="display" aria-live="polite">
+          {display}
+        </div>
 
         <div className="button-grid">
-          {rows.flat().filter(Boolean).map((value) => (
+          {buttons.flat().filter(Boolean).map((value) => (
             <button
               key={value}
+              type="button"
               className={[
                 "calc-button",
                 ["+", "−", "×", "÷"].includes(value) ? "operator" : "",
-                ["C", "⌫"].includes(value) ? "utility" : "",
+                value === "C" || value === "⌫" ? "utility" : "",
                 value === "=" ? "equals" : "",
                 value === "0" ? "zero" : "",
               ].filter(Boolean).join(" ")}
-              onClick={() => click(value)}
+              onClick={() => handleClick(value)}
+              aria-label={value === "⌫" ? "Delete last digit" : value}
             >
               {value}
             </button>
           ))}
         </div>
-
         <p className="calculator-footer">BUILT WITH REACT 💜</p>
       </section>
 
