@@ -12,5 +12,4 @@ You need **at least 2 criteria** with evidence and **at least 1 gap or risk**.
 
 | Criterion | What the baseline says | What the AI says | Evidence (number, row, or quote) | Gap or risk found |
 |---|---|---|---|---|
-| **Accuracy**: are the numbers right? | The dataset has 25 rows with 1 duplicate, leaving 24 program-weeks. After excluding the closure-related zero and the missing count, there are 22 usable sessions with 398 attendees out of 489 registered seats (81.4%). | The AI correctly identified the four programs and attendance trends but did not include the attendance totals or attendance-rate calculations. | The baseline reports 398 attendees out of 489 seats (81.4%), Teen Coding Club at 87.5%, and Adult Digital Skills at 70.8%. These values were not included in the AI summary. | Missing calculations could cause readers to miss the actual attendance rates and totals. |
-| **Completeness**: did it catch the data problems? | The baseline identifies a duplicate Adult Digital Skills row on Sept. 22, a 
+| **Accuracy**: are the numbers right? | 398 attendees out of 489 registered seats (81.4%). Teen Coding Club 87
