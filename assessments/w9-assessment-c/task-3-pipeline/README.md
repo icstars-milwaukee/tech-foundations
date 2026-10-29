@@ -5,11 +5,11 @@
 
 # [Project name]: Community Program Data Pipeline
 
-**Author:** [your name] · **Date:** [date]
+**Author:** Amir Husseini · **Date:** October 29, 2026
 
 ## What this does
 
-[One or two sentences: what goes in, what comes out, and who would use it.]
+This project reads a CSV of community program sign-ups, cleans inconsistent dates and values, and exports a cleaned CSV and JSON file. The files can be used for reporting or further data analysis.
 
 ```
 data/raw.csv  →  data/clean.csv  →  data/export.json
@@ -27,20 +27,21 @@ npm run pipeline
 
 [A short list. Full details are in `notes/data_cleaning_log.md`.]
 
-- 
-- 
-- 
+- Renames the blank site header and removes the unused trailing column.
+- Standardizes valid dates and converts session counts to numbers.
+- Converts completion values to booleans and represents unknown values as null.
+- Skips blank rows and logs data problems that need review.
 
 ## Output
 
 | File | What's in it |
 |---|---|
-| `data/clean.csv` | [describe the columns and types] |
-| `data/export.json` | [describe the shape] |
+| `data/clean.csv` | One row per participant, with consistent column names, ISO-formatted dates, numeric session counts, boolean completion values, and empty cells for nulls. |
+| `data/export.json` | An array of participant objects with the same seven fields, using JSON numbers, booleans, and null values. |
 
 ## Known limitations
 
-[Anything you flagged instead of fixing, or assumptions you made, e.g. about date formats.]
+The source data contains a corrupted name (Jos�), which cannot be safely corrected without checking the original source. The word twelve is interpreted as 12 sessions. Missing values remain unknown rather than being replaced with zero. The pipeline logs anomalies, but it does not verify the records against an external source.
 
 ---
 
