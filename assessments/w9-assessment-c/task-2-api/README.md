@@ -4,7 +4,7 @@
 
 > Call this API endpoint, parse the JSON response, and extract the field `title`. Handle one simulated error (e.g., network failure).
 
-Your trainer runs a practice API at `http://localhost:3001` and gives you an API key.
+Your trainer runs a practice API at `http://localhost:3001`. It only answers requests that send the API key in an `x-api-key` header.
 
 ## Setup (2 minutes)
 
@@ -12,7 +12,7 @@ Your trainer runs a practice API at `http://localhost:3001` and gives you an API
 2. Make your `.env`:
    - PowerShell: `Copy-Item .env.example .env`
    - Git Bash: `cp .env.example .env`
-3. Put the key from the board in `.env` as `API_KEY=...`.
+3. Check that `.env` has `API_KEY=w9c-practice-key`. That's the practice key the server expects.
 4. Run `git init`, check that `git status` does **not** list `.env`, and commit the starter.
 
 ## Commands (run inside `starter/`)

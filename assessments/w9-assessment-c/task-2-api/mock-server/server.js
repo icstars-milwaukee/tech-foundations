@@ -116,8 +116,7 @@ if (require.main === module) {
     console.log("");
     console.log(`W9C Mock Item API running at http://localhost:${PORT}`);
     console.log(`Try: GET http://localhost:${PORT}/api/item/101`);
-    console.log(`API key for interns: ${apiKey}`);
-    console.log("Write it on the board. Interns put it in their own .env as API_KEY=...");
+    console.log(`API key: ${apiKey}`);
     console.log("Press Ctrl+C to stop (that's also how you simulate a network failure).");
     console.log("");
   });

@@ -8,7 +8,7 @@ const { spawn } = require("child_process");
 const envFile = path.join(__dirname, ".env");
 if (!fs.existsSync(envFile)) {
   fs.copyFileSync(path.join(__dirname, ".env.example"), envFile);
-  console.log("Created mock-server/.env from .env.example. Edit MOCK_API_KEY there to change the room key.");
+  console.log("Created mock-server/.env from .env.example.");
 }
 
 spawn(process.execPath, [path.join(__dirname, "server.js")], { stdio: "inherit" }).on("exit", (code) => process.exit(code ?? 0));
