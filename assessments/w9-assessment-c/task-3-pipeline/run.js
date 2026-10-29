@@ -2,15 +2,16 @@
 // W9 Assessment C, Task 3: Data Pipeline
 // =====================================================================
 //
-//   npm run pipeline
+//   npm run pipeline                                 data/raw.csv -> data/
+//   npm run pipeline -- <file.csv> [output folder]   a new export  -> out/<file>/
 //
-//   data/raw.csv  ->  data/clean.csv  ->  data/export.json   (+ data/quality_report.json)
+//   raw.csv  ->  clean.csv  ->  export.json   (+ quality_report.json)
 //
-// Reads the community program sign-ups export, gives every column a clear
+// Reads a community program sign-ups export, gives every column a clear
 // name and one data type, runs validation checks on the result, and writes
 // a cleaned CSV, a JSON export, and a data quality report.
 //
-// Never edit data/raw.csv by hand. The code does the cleaning, and every
+// Never edit the raw CSV by hand. The code does the cleaning, and every
 // value it fixes or flags is logged as an anomaly. The reasons behind each
 // rule are in notes/data_cleaning_log.md.
 // =====================================================================
@@ -18,30 +19,47 @@
 const fs = require("fs");
 const path = require("path");
 
-const RAW = path.join(__dirname, "data", "raw.csv");
-const CLEAN = path.join(__dirname, "data", "clean.csv");
-const JSON_OUT = path.join(__dirname, "data", "export.json");
-const REPORT = path.join(__dirname, "data", "quality_report.json");
+const DEFAULT_INPUT = path.join(__dirname, "data", "raw.csv");
+const DEFAULT_OUT_DIR = path.join(__dirname, "data");
 
 // Logging standard (from T7A):  [timestamp] [LEVEL] message
 function log(level, message) {
   console.log(`[${new Date().toISOString()}] [${level}] ${message}`);
 }
 
-// Every problem found goes in here as { line, where, column, message }
-// and is logged like: "Row P002 (line 3): sessions_attended 'twelve' -> 12"
-const anomalies = [];
-
-function formatAnomaly(anomaly) {
-  return `${anomaly.where}: ${anomaly.message}`;
-}
-
 // ---------------------------------------------------------------------
 // SETTINGS: what a sign-ups export should look like
 // ---------------------------------------------------------------------
 
-// The output columns, in order.
-const COLUMNS = ["participant_id", "first_name", "program", "neighborhood", "start_date", "sessions_attended", "completed"];
+// The output columns, in order, and the function (STEP 2) that cleans each one.
+// Every run writes exactly these columns, however the input names or orders them.
+const CLEANERS = {
+  participant_id: toId,
+  first_name: toText,
+  program: toText,
+  neighborhood: toText,
+  start_date: toISODate,
+  sessions_attended: toNumber,
+  completed: toBoolean,
+};
+const COLUMNS = Object.keys(CLEANERS);
+
+// Other header spellings an export might use, after normalizeHeader() has
+// lowercased them and turned spaces and punctuation into "_".
+const HEADER_ALIASES = {
+  id: "participant_id",
+  participant: "participant_id",
+  name: "first_name",
+  first: "first_name",
+  location: "neighborhood",
+  neighbourhood: "neighborhood",
+  site: "neighborhood",
+  date: "start_date",
+  start: "start_date",
+  sessions: "sessions_attended",
+  attended: "sessions_attended",
+  complete: "completed",
+};
 
 // Text that means "unknown" in any column (compared trimmed and lowercase).
 // "na" is left out on purpose: Na is a real first name.
@@ -59,6 +77,12 @@ const FALSE_WORDS = new Set(["no", "n", "false", "f", "0"]);
 const KNOWN_PROGRAMS = ["Teen Coding Club", "Adult Digital Skills", "Homework Help", "Senior Tech Help"];
 const ID_PATTERN = /^P\d{3,}$/;
 
+// Every problem found goes in an `anomalies` list as { line, where, column, message }
+// and is logged like: "Row P002 (line 3): sessions_attended 'twelve' -> 12"
+function formatAnomaly(anomaly) {
+  return `${anomaly.where}: ${anomaly.message}`;
+}
+
 // ---------------------------------------------------------------------
 // STEP 1: READ
 // ---------------------------------------------------------------------
@@ -71,24 +95,26 @@ const ID_PATTERN = /^P\d{3,}$/;
 const utf8 = new TextDecoder("utf-8", { fatal: true });
 const latin1 = new TextDecoder("windows-1252");
 
-function readRaw() {
-  const bytes = fs.readFileSync(RAW);
+function readRaw(file, anomalies) {
+  if (!fs.existsSync(file)) throw new Error(`Input file not found: ${file}`);
+  const bytes = fs.readFileSync(file);
   const lines = [];
   let start = 0;
   while (start <= bytes.length) {
     const newline = bytes.indexOf(0x0a, start);
     const end = newline === -1 ? bytes.length : newline;
-    lines.push(decodeLine(bytes.subarray(start, end), lines.length + 1));
+    lines.push(decodeLine(bytes.subarray(start, end), lines.length + 1, anomalies));
     start = end + 1;
   }
   if (lines[lines.length - 1] === "") lines.pop(); // the file ended with a newline
+  if (lines.length === 0) throw new Error(`Input file is empty: ${file}`);
   return lines;
 }
 
 // Windows files end lines with "\r\n". Splitting on "\n" leaves a "\r" stuck
 // to the last cell of every row, so it's trimmed here. A UTF-8 byte order
 // mark (which Excel adds when it saves "CSV UTF-8") is removed too.
-function decodeLine(bytes, line) {
+function decodeLine(bytes, line, anomalies) {
   let text;
   try {
     text = utf8.decode(bytes);
@@ -128,14 +154,15 @@ function parseCsvLine(line) {
 // ---------------------------------------------------------------------
 
 // Gives every input column one of the names in COLUMNS, or null to drop it.
-// Headers are matched by name ("First Name" or "first_name"), not position.
+// Headers are matched loosely ("Participant ID", "participant_id"), so an
+// export with renamed or re-ordered columns still lines up.
 // A blank header is handled two ways:
 //   - no data in the column at all -> dropped (raw.csv's trailing comma)
 //   - has data, and exactly one expected column wasn't found -> it must be
 //     that column (raw.csv's 4th column holds the neighborhood)
 // Throws if an expected column still can't be found, because every row
 // would come out wrong.
-function fixHeaders(headers, rows) {
+function fixHeaders(headers, rows, anomalies) {
   const names = headers.map(normalizeHeader);
   const hasData = (i) => rows.some((cells) => !isBlank(cells[i]));
   const notFound = COLUMNS.filter((column) => !names.includes(column));
@@ -176,9 +203,10 @@ function fixHeaders(headers, rows) {
   return fixed;
 }
 
-// "First Name" -> "first_name", "Completed?" -> "completed"
+// "Participant ID" -> "participant_id", "Completed?" -> "completed", "Sessions" -> "sessions_attended"
 function normalizeHeader(header) {
-  return header.trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  const key = header.trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+  return Object.hasOwn(HEADER_ALIASES, key) ? HEADER_ALIASES[key] : key;
 }
 
 function isBlank(value) {
@@ -267,12 +295,12 @@ function describeFix(raw, value) {
 
 // Builds one clean object per row.
 //   - Blank rows (empty lines, or lines that are only commas) are skipped.
-//   - Each column goes through its cleaning function.
+//   - Each column goes through its function in CLEANERS.
 //   - Every value that had to be fixed or flagged is pushed to `anomalies`.
 // Returns { rows, skipped }, where each row is { line, where, record }.
-function cleanRows(lines) {
+function cleanRows(lines, anomalies) {
   const body = lines.slice(1).map((text, i) => ({ line: i + 2, cells: parseCsvLine(text) }));
-  const names = fixHeaders(parseCsvLine(lines[0]), body.map((row) => row.cells));
+  const names = fixHeaders(parseCsvLine(lines[0]), body.map((row) => row.cells), anomalies);
 
   const rows = [];
   let skipped = 0;
@@ -287,15 +315,8 @@ function cleanRows(lines) {
     names.forEach((name, i) => {
       if (name) raw[name] = cells[i] ?? "";
     });
-    const record = {
-      participant_id: toId(raw.participant_id),
-      first_name: toText(raw.first_name),
-      program: toText(raw.program),
-      neighborhood: toText(raw.neighborhood),
-      start_date: toISODate(raw.start_date),
-      sessions_attended: toNumber(raw.sessions_attended),
-      completed: toBoolean(raw.completed),
-    };
+    const record = {};
+    for (const column of COLUMNS) record[column] = CLEANERS[column](raw[column]);
 
     const where = record.participant_id ? `Row ${record.participant_id} (line ${line})` : `Line ${line}`;
     const extra = cells.slice(names.length).filter((cell) => !isBlank(cell));
@@ -371,7 +392,7 @@ function validateRecords(rows) {
 // The data quality summary: row counts, how complete each column is, how many
 // anomalies each column had, a quick profile of the values, and the result of
 // every check. Column stats describe the rows that were written out.
-function buildQualityReport(lineCount, skipped, validation) {
+function buildQualityReport(inputFile, lineCount, skipped, anomalies, validation) {
   const records = validation.kept.map((row) => row.record);
   const keptLines = new Set(validation.kept.map((row) => row.line));
   const columns = {};
@@ -386,7 +407,7 @@ function buildQualityReport(lineCount, skipped, validation) {
   }
 
   return {
-    source_file: path.basename(RAW),
+    source_file: path.basename(inputFile),
     generated_at: new Date().toISOString(),
     rows: {
       lines_read: lineCount,
@@ -451,12 +472,12 @@ function logQualitySummary(report) {
 // cell with a comma or quote is wrapped in quotes so the CSV stays valid.
 // The file starts with a UTF-8 byte order mark so Excel shows "José" and
 // "Zoë" correctly instead of guessing the wrong encoding.
-function writeCleanCsv(records) {
+function writeCleanCsv(records, file) {
   const lines = [COLUMNS.join(",")];
   for (const record of records) {
     lines.push(COLUMNS.map((column) => toCsvCell(record[column])).join(","));
   }
-  fs.writeFileSync(CLEAN, "﻿" + lines.join("\n") + "\n", "utf8");
+  fs.writeFileSync(file, "﻿" + lines.join("\n") + "\n", "utf8");
 }
 
 function toCsvCell(value) {
@@ -471,9 +492,9 @@ function writeJson(data, file) {
 
 // Reads the outputs back to prove they're usable: export.json has to parse,
 // and both files have to hold every record that was cleaned.
-function verifyOutputs(expected) {
-  const csvRows = fs.readFileSync(CLEAN, "utf8").trim().split("\n").length - 1;
-  const jsonRows = JSON.parse(fs.readFileSync(JSON_OUT, "utf8")).length;
+function verifyOutputs(csvFile, jsonFile, expected) {
+  const csvRows = readRaw(csvFile, []).length - 1;
+  const jsonRows = JSON.parse(fs.readFileSync(jsonFile, "utf8")).length;
   if (csvRows !== expected || jsonRows !== expected) {
     throw new Error(`Output check failed: expected ${expected} records, clean.csv has ${csvRows}, export.json has ${jsonRows}`);
   }
@@ -481,30 +502,64 @@ function verifyOutputs(expected) {
 }
 
 // ---------------------------------------------------------------------
-function main() {
+// RUN
+// ---------------------------------------------------------------------
+
+function runPipeline(inputFile = DEFAULT_INPUT, outDir = DEFAULT_OUT_DIR) {
+  const anomalies = [];
+  const show = (file) => path.relative(process.cwd(), file) || ".";
   log("INFO", "Pipeline start");
 
-  const lines = readRaw();
-  log("INFO", `Read ${lines.length} lines from data/raw.csv`);
+  const lines = readRaw(inputFile, anomalies);
+  log("INFO", `Read ${lines.length} lines from ${show(inputFile)}`);
 
-  const { rows, skipped } = cleanRows(lines);
+  const { rows, skipped } = cleanRows(lines, anomalies);
   log("INFO", `Rows processed: ${rows.length} (${skipped} blank rows skipped)`);
 
   log("INFO", `Anomalies found: ${anomalies.length}`);
   anomalies.forEach((anomaly) => log("WARN", formatAnomaly(anomaly)));
 
   const validation = validateRecords(rows);
-  const report = buildQualityReport(lines.length, skipped, validation);
+  const report = buildQualityReport(inputFile, lines.length, skipped, anomalies, validation);
   logQualitySummary(report);
 
   const records = validation.kept.map((row) => row.record);
-  writeCleanCsv(records);
-  writeJson(records, JSON_OUT);
-  writeJson(report, REPORT);
-  log("INFO", "Wrote data/clean.csv, data/export.json, data/quality_report.json");
+  const csvFile = path.join(outDir, "clean.csv");
+  const jsonFile = path.join(outDir, "export.json");
+  const reportFile = path.join(outDir, "quality_report.json");
+  fs.mkdirSync(outDir, { recursive: true });
+  writeCleanCsv(records, csvFile);
+  writeJson(records, jsonFile);
+  writeJson(report, reportFile);
+  log("INFO", `Wrote ${show(csvFile)}, ${show(jsonFile)}, ${show(reportFile)}`);
 
-  verifyOutputs(records.length);
+  verifyOutputs(csvFile, jsonFile, records.length);
   log("INFO", "Pipeline done");
+  return { records, report };
 }
 
-main();
+//   npm run pipeline                            data/raw.csv -> data/
+//   npm run pipeline -- new.csv                 new.csv      -> out/new/
+//   npm run pipeline -- new.csv some/folder     new.csv      -> some/folder/
+// A new file gets its own output folder by default, so it never overwrites data/.
+function main() {
+  const [inputArg, outArg] = process.argv.slice(2);
+  // npm runs scripts from this folder; INIT_CWD is the folder the command was typed in.
+  const typedIn = process.env.INIT_CWD || process.cwd();
+  const inputFile = inputArg ? path.resolve(typedIn, inputArg) : DEFAULT_INPUT;
+  let outDir = DEFAULT_OUT_DIR;
+  if (outArg) outDir = path.resolve(typedIn, outArg);
+  else if (inputArg) outDir = path.join(__dirname, "out", path.parse(inputFile).name);
+
+  try {
+    runPipeline(inputFile, outDir);
+  } catch (err) {
+    log("ERROR", `Pipeline stopped: ${err.message}`);
+    process.exitCode = 1;
+  }
+}
+
+if (require.main === module) main();
+
+// Exported for test/pipeline.test.js, or for another script to reuse.
+module.exports = { COLUMNS, readRaw, parseCsvLine, toText, toNumber, toISODate, toBoolean, runPipeline };

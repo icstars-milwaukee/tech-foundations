@@ -4,7 +4,8 @@
   "private": true,
   "description": "i.c.stars Tech Foundations, W9 Assessment C Task 3: data pipeline",
   "scripts": {
-    "pipeline": "node run.js"
+    "pipeline": "node run.js",
+    "test": "node --test"
   },
   "engines": {
     "node": ">=18"

@@ -54,7 +54,7 @@ After cleaning, every row goes through 5 checks. Results print at the end of eac
 
 The quality report also gives, for each column, how many values are filled and missing, how many anomalies it had, value counts for categories (program, neighborhood, completed), and min/max/average or earliest/latest for numbers and dates. As a final step the pipeline reads its own outputs back and checks that `export.json` parses and that both files hold the same number of records.
 
-`raw.csv` passes all 5 checks.
+`raw.csv` passes all 5 checks. `samples/new_signups.csv` is a second, made-up export that fails some on purpose, to show the checks working. It has renamed and reordered headers, a byte order mark, a quoted program with a comma, a duplicate ID, a missing ID, a negative session count, and Feb 30.
 
 ## Result
 

@@ -4,7 +4,7 @@
 
 ## What this does
 
-It takes the raw community program sign-ups export, which has blank headers, mixed encodings, and the same data written several ways, and turns it into a clean CSV and a JSON file. Program staff can report from them, and an app can load them. Each run also writes a data quality report.
+It takes the raw community program sign-ups export, which has blank headers, mixed encodings, and the same data written several ways, and turns it into a clean CSV and a JSON file. Program staff can report from them, and an app can load them. Each run also writes a data quality report. It works on any new export with the same kind of columns, not just this one file.
 
 ```
 data/raw.csv  →  data/clean.csv  →  data/export.json
@@ -19,11 +19,30 @@ Requires Node 18+. No `npm install`.
 npm run pipeline
 ```
 
+### On a new file
+
+```
+npm run pipeline -- path/to/new_export.csv               # writes to out/new_export/
+npm run pipeline -- path/to/new_export.csv some/folder   # writes to some/folder/
+```
+
+To try it, run `npm run pipeline -- samples/new_signups.csv`. That sample is a made-up second export with renamed and reordered headers and some bad rows. A new file gets its own output folder, so it never overwrites `data/`.
+
+Headers can come in any order and with looser spellings (`Participant ID`, `Start Date`, `Sessions`, `Completed?`). If an expected column is missing completely, the pipeline stops with an error and exit code 1 instead of writing bad data.
+
+### Tests
+
+```
+npm test
+```
+
+7 tests, using Node's built-in test runner. They cover each cleaning function, a full run on `data/raw.csv`, a full run on the sample new file, and the missing-column error.
+
 ## What the pipeline cleans
 
 Full details, including why each fix was made, are in [`notes/data_cleaning_log.md`](notes/data_cleaning_log.md).
 
-- **Headers:** names the blank 4th column `neighborhood` and drops the empty trailing column.
+- **Headers:** names the blank 4th column `neighborhood`, drops the empty trailing column, and matches loosely spelled headers.
 - **Encoding:** decodes each line as UTF-8, or as Latin-1 if that fails, so both `José` (Latin-1) and `Zoë` (UTF-8) come through. Also strips Windows `\r\n` endings.
 - **Blank rows:** skipped.
 - **`sessions_attended`:** becomes a whole number or `null` (`"twelve"` → 12, `" 7 "` → 7, `NULL` → `null`).

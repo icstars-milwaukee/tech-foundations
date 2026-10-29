@@ -1,3 +1,5 @@
 node_modules/
 .DS_Store
 .env
+# pipeline runs on new files write here (npm run pipeline -- <file.csv>)
+out/
