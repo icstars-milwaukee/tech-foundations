@@ -26,67 +26,188 @@ function log(level, message) {
   console.log(`[${new Date().toISOString()}] [${level}] ${message}`);
 }
 
-// Every problem you find goes in here, e.g. "Row P002: sessions 'twelve' -> 12"
+// Every problem found goes in here, e.g. "P002: sessions_attended "twelve" -> 12"
 const anomalies = [];
+const flag = (message) => anomalies.push(message);
+
+const MONTHS = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
+const TRUE_WORDS = ["yes", "y", "true"];
+const FALSE_WORDS = ["no", "n", "false"];
+const NUMBER_WORDS = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
+  eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17,
+  eighteen: 18, nineteen: 19, twenty: 20,
+};
+
+// Splits one CSV line into cells. Handles "quoted, cells" in case a value has a comma.
+function splitCsvLine(line) {
+  const cells = [];
+  let cell = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (inQuotes) {
+      if (c === '"' && line[i + 1] === '"') { cell += '"'; i++; }
+      else if (c === '"') inQuotes = false;
+      else cell += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { cells.push(cell); cell = ""; }
+    else cell += c;
+  }
+  cells.push(cell);
+  return cells;
+}
 
 // ---------------------------------------------------------------------
 // STEP 1: READ
 // ---------------------------------------------------------------------
 function readRaw() {
-  // TODO 1: Read data/raw.csv and split it into lines.
-  //   - Open the file in VS Code first. What do you notice? Look at row P003.
-  //   - Windows files end lines with "\r\n", not just "\n".
-  return [];
+  // Reading as "latin1" keeps every byte as-is, so each line can be decoded on its own.
+  // (The file mixes encodings: P003 "Jos\xE9" is Latin-1, P005 "Zo\xC3\xAB" is UTF-8.)
+  const text = fs.readFileSync(RAW).toString("latin1").replace(/^\xEF\xBB\xBF/, "");
+  const lines = text.split(/\r?\n/); // Windows files end lines with "\r\n"
+  if (lines[lines.length - 1] === "") lines.pop(); // file ends with a newline
+
+  return lines.map((line) => {
+    try {
+      // Strict UTF-8 first: correct for ASCII and for "Zoë" stored as UTF-8.
+      return new TextDecoder("utf-8", { fatal: true }).decode(Buffer.from(line, "latin1"));
+    } catch {
+      // Not valid UTF-8, so these are single-byte Latin-1 characters (like "José").
+      flag(`${line.split(",")[0]}: invalid UTF-8 bytes, decoded as Latin-1`);
+      return line; // already one character per byte, which is what Latin-1 means
+    }
+  });
 }
 
 // ---------------------------------------------------------------------
 // STEP 2: CLEAN
 // ---------------------------------------------------------------------
 
-// TODO 2: Some header cells are blank. Give every column a clear name,
-//   and decide what to do with a column that has no data at all.
-function fixHeaders(headers) {
-  return headers;
+// Names every column. A blank header with no data in its column is dropped (null).
+// A blank header WITH data gets a name from BLANK_HEADER_NAMES, else "column_N".
+const BLANK_HEADER_NAMES = { 3: "site" }; // column 4 holds place names like "Washington Park"
+function fixHeaders(headers, rows) {
+  return headers.map((header, i) => {
+    const name = header.trim().toLowerCase();
+    if (name) return name;
+    const hasData = rows.some((row) => (row[i] || "").trim() !== "");
+    if (!hasData) {
+      flag(`Column ${i + 1} has no header and no data -> dropped`);
+      return null;
+    }
+    const guess = BLANK_HEADER_NAMES[i] || `column_${i + 1}`;
+    flag(`Column ${i + 1} has no header -> named "${guess}"`);
+    return guess;
+  });
 }
 
-// TODO 3: Turn a sessions_attended value into a number, or null if unknown.
-//   Examples in the data: "12", "twelve", "", " 7 ", "NULL"
+// "12" -> 12, " 7 " -> 7, "twelve" -> 12, "", "NULL", "N/A" -> null
 function toNumber(value) {
-  return value;
+  const text = String(value ?? "").trim().toLowerCase();
+  if (/^-?\d+(\.\d+)?$/.test(text)) return Number(text);
+  if (text in NUMBER_WORDS) return NUMBER_WORDS[text];
+  return null;
 }
 
-// TODO 4: Turn a start_date into one format: YYYY-MM-DD, or null if unknown.
-//   Examples in the data: "2026-09-08", "09/15/2026", "Sep 22 2026", "9/29/26"
+// "2026-09-08", "2026/10/06", "09/15/2026", "9/29/26", "Sep 22 2026" -> "YYYY-MM-DD"; else null
 function toISODate(value) {
-  return value;
+  const text = String(value ?? "").trim();
+  let year, month, day, m;
+  if ((m = text.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/))) {
+    [year, month, day] = [m[1], m[2], m[3]];
+  } else if ((m = text.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/))) {
+    // Month first (US style). The file proves it: 09/15/2026 and 10/13/2026 can't be day-first.
+    [month, day, year] = [m[1], m[2], m[3].length === 2 ? "20" + m[3] : m[3]];
+  } else if ((m = text.match(/^([A-Za-z]{3})[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})$/)) && MONTHS[m[1].toLowerCase()]) {
+    [month, day, year] = [MONTHS[m[1].toLowerCase()], m[2], m[3]];
+  } else {
+    return null;
+  }
+  [year, month, day] = [Number(year), Number(month), Number(day)];
+  const date = new Date(Date.UTC(year, month - 1, day));
+  const isRealDate = date.getUTCFullYear() === year && date.getUTCMonth() === month - 1 && date.getUTCDate() === day;
+  if (!isRealDate) return null;
+  return `${year}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
-// TODO 5: Turn completed into true / false, or null if unknown.
-//   Examples in the data: "yes", "Y", "TRUE", "no", "N/A", ""
+// "yes"/"Y"/"TRUE" -> true, "no"/"N"/"false" -> false, anything else ("N/A", "") -> null
 function toBoolean(value) {
-  return value;
+  const text = String(value ?? "").trim().toLowerCase();
+  if (TRUE_WORDS.includes(text)) return true;
+  if (FALSE_WORDS.includes(text)) return false;
+  return null;
 }
 
-// TODO 6: Build one clean object per row.
-//   - Skip blank rows (empty lines, or lines that are only commas).
-//   - Use the functions above for each column.
-//   - Blank text (like a missing name) should become null, not "".
-//   - Push a message to `anomalies` for every value you had to fix or flag.
+// A blank row is an empty line, or a line that is only commas (",,,,,,,").
+const isBlankLine = (line) => line.replace(/,/g, "").trim() === "";
+
+// Turns the cells of ONE raw row into ONE clean record, logging every fix or gap.
+function cleanRow(cells, headers) {
+  const raw = {};
+  headers.forEach((header, i) => {
+    if (header) raw[header] = cells[i] ?? "";
+  });
+  const id = raw.participant_id.trim();
+
+  // Text columns: trim, and turn a blank into null.
+  const text = (field) => {
+    const value = raw[field].trim();
+    if (value === "") flag(`${id}: ${field} is blank -> null`);
+    return value === "" ? null : value;
+  };
+
+  // Typed columns: run the converter, and flag nulls (and changes, if reportChanges).
+  const typed = (field, convert, reportChanges) => {
+    const result = convert(raw[field]);
+    const original = raw[field].trim();
+    if (result === null) flag(`${id}: ${field} ${original === "" ? "is blank" : `"${original}" is not usable`} -> null`);
+    else if (reportChanges && String(result) !== raw[field]) flag(`${id}: ${field} "${raw[field]}" -> ${result}`);
+    return result;
+  };
+
+  return {
+    participant_id: id,
+    first_name: text("first_name"),
+    program: text("program"),
+    site: text("site"),
+    start_date: typed("start_date", toISODate, true),
+    sessions_attended: typed("sessions_attended", toNumber, true),
+    completed: typed("completed", toBoolean, false), // yes/Y/TRUE are normal, so only nulls are flagged
+  };
+}
+
 function cleanRows(lines) {
-  return [];
+  const [headerLine, ...bodyLines] = lines;
+
+  const rows = bodyLines.filter((line) => !isBlankLine(line)).map(splitCsvLine);
+  log("INFO", `Skipped ${bodyLines.length - rows.length} blank row(s)`);
+
+  const headers = fixHeaders(splitCsvLine(headerLine), rows);
+  return rows.map((cells) => cleanRow(cells, headers));
 }
 
 // ---------------------------------------------------------------------
 // STEP 3 + 4: WRITE
 // ---------------------------------------------------------------------
+const COLUMNS = ["participant_id", "first_name", "program", "site", "start_date", "sessions_attended", "completed"];
 
-// TODO 7: Write the records to data/clean.csv (a header row, then one line per record).
-//   Write null as an empty cell.
-function writeCleanCsv(records) {}
+function csvCell(value) {
+  if (value === null || value === undefined) return ""; // null -> empty cell
+  const text = String(value);
+  return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+}
 
-// TODO 8: Write the records to data/export.json.
-//   Hint: JSON.stringify(records, null, 2) makes it readable.
-function writeJson(records) {}
+function writeCleanCsv(records) {
+  const rows = records.map((record) => COLUMNS.map((column) => csvCell(record[column])).join(","));
+  fs.writeFileSync(CLEAN, [COLUMNS.join(","), ...rows].join("\n") + "\n");
+}
+
+function writeJson(records) {
+  fs.writeFileSync(JSON_OUT, JSON.stringify(records, null, 2) + "\n");
+  JSON.parse(fs.readFileSync(JSON_OUT, "utf8")); // throws if the file is not valid JSON
+  log("INFO", "export.json is valid JSON");
+}
 
 // ---------------------------------------------------------------------
 function main() {
@@ -106,4 +227,9 @@ function main() {
   log("INFO", "Pipeline done");
 }
 
-main();
+try {
+  main();
+} catch (err) {
+  log("ERROR", `Pipeline failed: ${err.message}`);
+  process.exitCode = 1;
+}
