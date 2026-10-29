@@ -3,13 +3,13 @@
   Copy this whole folder into its own repo first (see "Setup" below).
 -->
 
-# [Project name]: Community Program Data Pipeline
+# Sign-Up Cleaner: Community Program Data Pipeline
 
-**Author:** [your name] · **Date:** [date]
+**Author:** Ventura Perez · **Date:** October 29, 2026
 
 ## What this does
 
-[One or two sentences: what goes in, what comes out, and who would use it.]
+It takes the raw community program sign-ups export, which has blank headers, mixed encodings, and the same data written several ways, and turns it into a clean CSV and a JSON file. Program staff can report from them, and an app can load them.
 
 ```
 data/raw.csv  →  data/clean.csv  →  data/export.json
