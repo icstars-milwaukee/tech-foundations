@@ -29,25 +29,36 @@ async function main() {
   let url = `${BASE_URL}/api/item/${ITEM_ID}`;
   if (fail) url += `?fail=${fail}`;
 
-  // TODO 1: Call the endpoint with fetch().
-  //   - Send the API key in a header named "x-api-key".
-  //   - Never type the key here. Use API_KEY (it comes from .env).
+  try {
+    const response = await fetch(url, {
+      headers: { "x-api-key": API_KEY },
+      signal: AbortSignal.timeout(5000),
+    });
 
+    if (!response.ok) {
+      let detail = "";
+      try {
+        const errorBody = await response.json();
+        detail = errorBody.message ? `: ${errorBody.message}` : "";
+      } catch {
+        // The status code is enough if the server does not return JSON.
+      }
+      throw new Error(`API returned ${response.status} ${response.statusText}${detail}`);
+    }
 
-  // TODO 2: Check the response. If response.ok is false, the server sent an
-  //   error (401, 404, 500...). Stop here and show a friendly message.
-
-
-  // TODO 3: Parse the JSON body.
-
-
-  // TODO 4: Extract the field "title" and print it.
-  //   Hint: console.log the parsed JSON first. Where is title nested?
-
+    const body = await response.json();
+    console.log(body);
+    console.log(`Title: ${body.data.title}`);
+  } catch (error) {
+    if (error.name === "TimeoutError" || error.name === "AbortError") {
+      console.error("Could not reach the API: the request timed out.");
+    } else if (error.message.startsWith("API returned")) {
+      console.error(`API request failed: ${error.message}`);
+    } else {
+      console.error("Could not reach the API. Is the server running?");
+    }
+    process.exitCode = 1;
+  }
 }
 
-// TODO 5: Handle errors.
-//   Right now a crash prints a scary stack trace. Catch the error and print
-//   a friendly message instead, e.g. "Could not reach the API. Is the server running?"
-//   Bonus: tell the user which kind of failure it was (network, 401, 500, timeout).
 main();
