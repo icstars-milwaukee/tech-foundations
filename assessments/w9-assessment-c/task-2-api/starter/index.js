@@ -32,17 +32,27 @@ async function main() {
   // TODO 1: Call the endpoint with fetch().
   //   - Send the API key in a header named "x-api-key".
   //   - Never type the key here. Use API_KEY (it comes from .env).
+const response = await fetch(url, {
+  headers: 
+  {  "x-api-key": API_KEY },
+  signal: AbortSignal.timeout(5000),
+});
 
-
+if (!response.ok) {
+  console.log(`[${new Date().toISOString()}] [ERROR] The API answered with status ${response.status}. Could not get the item.`);
+  return;
+}
   // TODO 2: Check the response. If response.ok is false, the server sent an
   //   error (401, 404, 500...). Stop here and show a friendly message.
 
 
   // TODO 3: Parse the JSON body.
+  const data = await response.json();
 
 
   // TODO 4: Extract the field "title" and print it.
   //   Hint: console.log the parsed JSON first. Where is title nested?
+  console.log(`[${new Date().toISOString()}] [INFO] Title: ${data.data.title}`);
 
 }
 
@@ -50,4 +60,10 @@ async function main() {
 //   Right now a crash prints a scary stack trace. Catch the error and print
 //   a friendly message instead, e.g. "Could not reach the API. Is the server running?"
 //   Bonus: tell the user which kind of failure it was (network, 401, 500, timeout).
-main();
+main().catch((err) => {
+  if (err.name === "TimeoutError") {
+    console.log(`[${new Date().toISOString()}] [ERROR] The API took too long to answer. Try again later.`);
+  } else {
+    console.log(`[${new Date().toISOString()}] [ERROR] Could not reach the API. Is the server running?`);
+  }
+});
