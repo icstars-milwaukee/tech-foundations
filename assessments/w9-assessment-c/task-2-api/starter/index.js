@@ -25,29 +25,53 @@ const fail = failArg ? failArg.split("=")[1] : null;
 async function main() {
   console.log(`[${new Date().toISOString()}] [INFO] Starting API call`);
 
-  // Build the URL, e.g. http://localhost:3001/api/item/101?fail=500
-  let url = `${BASE_URL}/api/item/${ITEM_ID}`;
-  if (fail) url += `?fail=${fail}`;
+  if (!BASE_URL || !API_KEY) {
+    console.error("API_BASE_URL and API_KEY must be set in .env.");
+    process.exitCode = 1;
+    return;
+  }
 
-  // TODO 1: Call the endpoint with fetch().
-  //   - Send the API key in a header named "x-api-key".
-  //   - Never type the key here. Use API_KEY (it comes from .env).
+  const endpoint = new URL(
+    `/api/item/${encodeURIComponent(ITEM_ID)}`,
+    BASE_URL,
+  );
+  if (fail) endpoint.searchParams.set("fail", fail);
 
+  try {
+    const response = await fetch(endpoint, {
+      headers: { "x-api-key": API_KEY },
+      signal: AbortSignal.timeout(5000),
+    });
 
-  // TODO 2: Check the response. If response.ok is false, the server sent an
-  //   error (401, 404, 500...). Stop here and show a friendly message.
+    if (!response.ok) {
+      console.error(`API request failed with HTTP ${response.status}.`);
+      process.exitCode = 1;
+      return;
+    }
 
+    const result = await response.json();
+    const title = result.data?.title;
 
-  // TODO 3: Parse the JSON body.
+    if (typeof title !== "string") {
+      console.error("API response did not include an item title.");
+      process.exitCode = 1;
+      return;
+    }
 
-
-  // TODO 4: Extract the field "title" and print it.
-  //   Hint: console.log the parsed JSON first. Where is title nested?
+    console.log(`Title: ${title}`);
+  } catch (error) {
+    if (error.name === "TimeoutError") {
+      console.error("The API request timed out. Please try again.");
+    } else if (error instanceof SyntaxError) {
+      console.error("The API returned an invalid JSON response.");
+    } else if (error instanceof TypeError) {
+      console.error("Could not reach the API. Is the server running?");
+    } else {
+      console.error(`The API request failed: ${error.message}`);
+    }
+    process.exitCode = 1;
+  }
 
 }
 
-// TODO 5: Handle errors.
-//   Right now a crash prints a scary stack trace. Catch the error and print
-//   a friendly message instead, e.g. "Could not reach the API. Is the server running?"
-//   Bonus: tell the user which kind of failure it was (network, 401, 500, timeout).
 main();
