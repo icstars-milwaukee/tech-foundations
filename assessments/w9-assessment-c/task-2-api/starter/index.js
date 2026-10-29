@@ -25,29 +25,37 @@ const fail = failArg ? failArg.split("=")[1] : null;
 async function main() {
   console.log(`[${new Date().toISOString()}] [INFO] Starting API call`);
 
-  // Build the URL, e.g. http://localhost:3001/api/item/101?fail=500
-  let url = `${BASE_URL}/api/item/${ITEM_ID}`;
-  if (fail) url += `?fail=${fail}`;
+  if (!BASE_URL) throw new Error("API_BASE_URL is missing. Check your .env file.");
+  if (!API_KEY) throw new Error("API_KEY is missing. Check your .env file.");
 
-  // TODO 1: Call the endpoint with fetch().
-  //   - Send the API key in a header named "x-api-key".
-  //   - Never type the key here. Use API_KEY (it comes from .env).
+  const url = new URL(`/api/item/${encodeURIComponent(ITEM_ID)}`, BASE_URL);
+  if (fail) url.searchParams.set("fail", fail);
 
+  const response = await fetch(url, {
+    headers: { "x-api-key": API_KEY },
+    signal: AbortSignal.timeout(5000),
+  });
 
-  // TODO 2: Check the response. If response.ok is false, the server sent an
-  //   error (401, 404, 500...). Stop here and show a friendly message.
+  if (!response.ok) {
+    throw new Error(`The API returned HTTP ${response.status} (${response.statusText}).`);
+  }
 
+  const result = await response.json();
+  const title = result?.data?.title;
+  if (typeof title !== "string") {
+    throw new Error("The API response did not contain an item title.");
+  }
 
-  // TODO 3: Parse the JSON body.
-
-
-  // TODO 4: Extract the field "title" and print it.
-  //   Hint: console.log the parsed JSON first. Where is title nested?
-
+  console.log(`Title: ${title}`);
 }
 
-// TODO 5: Handle errors.
-//   Right now a crash prints a scary stack trace. Catch the error and print
-//   a friendly message instead, e.g. "Could not reach the API. Is the server running?"
-//   Bonus: tell the user which kind of failure it was (network, 401, 500, timeout).
-main();
+main().catch((error) => {
+  if (error?.name === "TimeoutError" || error?.name === "AbortError") {
+    console.error("[ERROR] The API request timed out. Please try again.");
+  } else if (error instanceof TypeError) {
+    console.error("[ERROR] Could not reach the API. Is the server running?");
+  } else {
+    console.error(`[ERROR] ${error instanceof Error ? error.message : String(error)}`);
+  }
+  process.exitCode = 1;
+});
