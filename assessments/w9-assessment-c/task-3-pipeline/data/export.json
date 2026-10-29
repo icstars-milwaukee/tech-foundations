@@ -1,0 +1,128 @@
+[
+  {
+    "participant_id": "P001",
+    "first_name": "Maya",
+    "program": "Teen Coding Club",
+    "neighborhood": "Washington Park",
+    "start_date": "2026-09-08",
+    "sessions_attended": 12,
+    "completed": true
+  },
+  {
+    "participant_id": "P002",
+    "first_name": "Darnell",
+    "program": "Adult Digital Skills",
+    "neighborhood": "Mitchell Street",
+    "start_date": "2026-09-15",
+    "sessions_attended": 12,
+    "completed": false
+  },
+  {
+    "participant_id": "P003",
+    "first_name": "José",
+    "program": "Homework Help",
+    "neighborhood": "Sherman Park",
+    "start_date": "2026-09-22",
+    "sessions_attended": 10,
+    "completed": true
+  },
+  {
+    "participant_id": "P004",
+    "first_name": "Keisha",
+    "program": "Senior Tech Help",
+    "neighborhood": "Bay View",
+    "start_date": "2026-09-08",
+    "sessions_attended": null,
+    "completed": false
+  },
+  {
+    "participant_id": "P005",
+    "first_name": "Zoë",
+    "program": "Teen Coding Club",
+    "neighborhood": "Washington Park",
+    "start_date": "2026-09-29",
+    "sessions_attended": 8,
+    "completed": true
+  },
+  {
+    "participant_id": "P006",
+    "first_name": "Andre",
+    "program": "Adult Digital Skills",
+    "neighborhood": "Mitchell Street",
+    "start_date": "2026-10-06",
+    "sessions_attended": null,
+    "completed": null
+  },
+  {
+    "participant_id": "P007",
+    "first_name": "Lena",
+    "program": "Homework Help",
+    "neighborhood": "Sherman Park",
+    "start_date": "2026-09-15",
+    "sessions_attended": 7,
+    "completed": true
+  },
+  {
+    "participant_id": "P008",
+    "first_name": "Marcus",
+    "program": "Teen Coding Club",
+    "neighborhood": null,
+    "start_date": "2026-10-06",
+    "sessions_attended": 11,
+    "completed": false
+  },
+  {
+    "participant_id": "P009",
+    "first_name": "Tasha",
+    "program": "Senior Tech Help",
+    "neighborhood": "Bay View",
+    "start_date": "2026-09-22",
+    "sessions_attended": 9,
+    "completed": true
+  },
+  {
+    "participant_id": "P010",
+    "first_name": null,
+    "program": "Homework Help",
+    "neighborhood": "Sherman Park",
+    "start_date": "2026-09-29",
+    "sessions_attended": 6,
+    "completed": false
+  },
+  {
+    "participant_id": "P011",
+    "first_name": "Rosa",
+    "program": "Adult Digital Skills",
+    "neighborhood": "Mitchell Street",
+    "start_date": "2026-10-13",
+    "sessions_attended": 5,
+    "completed": true
+  },
+  {
+    "participant_id": "P012",
+    "first_name": "Kevin",
+    "program": "Senior Tech Help",
+    "neighborhood": "Bay View",
+    "start_date": null,
+    "sessions_attended": 3,
+    "completed": null
+  },
+  {
+    "participant_id": "P013",
+    "first_name": "Imani",
+    "program": "Teen Coding Club",
+    "neighborhood": "Washington Park",
+    "start_date": "2026-10-13",
+    "sessions_attended": 4,
+    "completed": false
+  },
+  {
+    "participant_id": "P014",
+    "first_name": "Luis",
+    "program": "Homework Help",
+    "neighborhood": "Sherman Park",
+    "start_date": "2026-10-13",
+    "sessions_attended": 12,
+    "completed": true
+  }
+]

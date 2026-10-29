@@ -1,0 +1,128 @@
+{
+  "source_file": "raw.csv",
+  "generated_at": "2026-10-29T19:09:15.275Z",
+  "rows": {
+    "lines_read": 17,
+    "blank_rows_skipped": 2,
+    "rejected": 0,
+    "written": 14
+  },
+  "columns": {
+    "participant_id": {
+      "filled": 14,
+      "missing": 0,
+      "anomalies": 0
+    },
+    "first_name": {
+      "filled": 13,
+      "missing": 1,
+      "anomalies": 1
+    },
+    "program": {
+      "filled": 14,
+      "missing": 0,
+      "anomalies": 0,
+      "values": {
+        "Teen Coding Club": 4,
+        "Adult Digital Skills": 3,
+        "Homework Help": 4,
+        "Senior Tech Help": 3
+      }
+    },
+    "neighborhood": {
+      "filled": 13,
+      "missing": 1,
+      "anomalies": 1,
+      "values": {
+        "Washington Park": 3,
+        "Mitchell Street": 3,
+        "Sherman Park": 4,
+        "Bay View": 3
+      }
+    },
+    "start_date": {
+      "filled": 13,
+      "missing": 1,
+      "anomalies": 8,
+      "earliest": "2026-09-08",
+      "latest": "2026-10-13"
+    },
+    "sessions_attended": {
+      "filled": 12,
+      "missing": 2,
+      "anomalies": 5,
+      "min": 3,
+      "max": 12,
+      "average": 8.3
+    },
+    "completed": {
+      "filled": 12,
+      "missing": 2,
+      "anomalies": 5,
+      "values": {
+        "true": 7,
+        "false": 5
+      }
+    }
+  },
+  "checks": [
+    {
+      "check": "participant_id is filled in",
+      "severity": "error",
+      "status": "pass",
+      "failed_rows": []
+    },
+    {
+      "check": "participant_id is unique (first one kept)",
+      "severity": "error",
+      "status": "pass",
+      "failed_rows": []
+    },
+    {
+      "check": "participant_id looks like P001",
+      "severity": "warning",
+      "status": "pass",
+      "failed_rows": []
+    },
+    {
+      "check": "program is a known program",
+      "severity": "warning",
+      "status": "pass",
+      "failed_rows": []
+    },
+    {
+      "check": "anyone marked completed attended at least 1 session",
+      "severity": "warning",
+      "status": "pass",
+      "failed_rows": []
+    }
+  ],
+  "rejected_rows": [],
+  "anomalies": [
+    "Line 4: not valid UTF-8, decoded as Latin-1 -> \"P003,José,Homework Help,Sherman Park,Sep 22 2026,10,Y,\"",
+    "Header column 4: no name -> named 'neighborhood' (the only expected column not found)",
+    "Header column 8: no name and no data -> dropped",
+    "Row P002 (line 3): start_date '09/15/2026' -> \"2026-09-15\"",
+    "Row P002 (line 3): sessions_attended 'twelve' -> 12",
+    "Row P003 (line 4): start_date 'Sep 22 2026' -> \"2026-09-22\"",
+    "Row P003 (line 4): completed 'Y' -> true",
+    "Row P004 (line 5): sessions_attended blank -> null",
+    "Row P005 (line 6): start_date '9/29/26' -> \"2026-09-29\"",
+    "Row P005 (line 6): completed 'TRUE' -> true",
+    "Line 7: blank row -> skipped",
+    "Row P006 (line 8): start_date '2026/10/06' -> \"2026-10-06\"",
+    "Row P006 (line 8): sessions_attended 'NULL' -> null (placeholder for unknown)",
+    "Row P006 (line 8): completed 'N/A' -> null (placeholder for unknown)",
+    "Line 9: blank row -> skipped",
+    "Row P007 (line 10): sessions_attended ' 7 ' -> 7",
+    "Row P008 (line 11): neighborhood blank -> null",
+    "Row P008 (line 11): start_date '10/06/2026' -> \"2026-10-06\" (ambiguous: read as US month/day)",
+    "Row P010 (line 13): first_name blank -> null",
+    "Row P011 (line 14): start_date 'Oct 13 2026' -> \"2026-10-13\"",
+    "Row P012 (line 15): start_date 'N/A' -> null (placeholder for unknown)",
+    "Row P012 (line 15): completed blank -> null",
+    "Row P014 (line 17): start_date '10/13/2026' -> \"2026-10-13\"",
+    "Row P014 (line 17): sessions_attended 'twelve' -> 12",
+    "Row P014 (line 17): completed 'Y' -> true"
+  ]
+}
