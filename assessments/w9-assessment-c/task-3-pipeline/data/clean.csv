@@ -1,0 +1,15 @@
+participant_id,first_name,program,neighborhood,start_date,sessions_attended,completed
+P001,Maya,Teen Coding Club,Washington Park,2026-09-08,12,true
+P002,Darnell,Adult Digital Skills,Mitchell Street,2026-09-15,12,false
+P003,José,Homework Help,Sherman Park,2026-09-22,10,true
+P004,Keisha,Senior Tech Help,Bay View,2026-09-08,,false
+P005,Zoë,Teen Coding Club,Washington Park,2026-09-29,8,true
+P006,Andre,Adult Digital Skills,Mitchell Street,2026-10-06,,
+P007,Lena,Homework Help,Sherman Park,2026-09-15,7,true
+P008,Marcus,Teen Coding Club,,2026-10-06,11,false
+P009,Tasha,Senior Tech Help,Bay View,2026-09-22,9,true
+P010,,Homework Help,Sherman Park,2026-09-29,6,false
+P011,Rosa,Adult Digital Skills,Mitchell Street,2026-10-13,5,true
+P012,Kevin,Senior Tech Help,Bay View,,3,
+P013,Imani,Teen Coding Club,Washington Park,2026-10-13,4,false
+P014,Luis,Homework Help,Sherman Park,2026-10-13,12,true
