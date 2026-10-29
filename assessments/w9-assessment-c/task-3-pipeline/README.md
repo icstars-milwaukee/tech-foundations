@@ -10,6 +10,7 @@
 ## What this does
 
 [One or two sentences: what goes in, what comes out, and who would use it.]
+When you enter raw.csv we are entering a table with data about participants, which is their id, name, program they are in, start day, and when it was completed.  Then it gives a return of a json formatting what an outsput should run as data/clean.csv
 
 ```
 data/raw.csv  →  data/clean.csv  →  data/export.json
