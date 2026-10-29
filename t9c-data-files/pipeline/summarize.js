@@ -23,7 +23,45 @@
 // =====================================================================
 
 function summarizeByTeam(records) {
-  return {};
+  const teams = new Map();
+  for (const record of records) {
+    const team = record.team || "unassigned";
+    if (!teams.has(team)) {
+      teams.set(team, {
+        responses: 0,
+        hoursTotal: 0,
+        hoursCount: 0,
+        confidenceTotal: 0,
+        confidenceCount: 0,
+        laptopIssues: 0,
+      });
+    }
+
+    const summary = teams.get(team);
+    summary.responses++;
+    if (record.hours_coding_this_week !== null && record.hours_coding_this_week !== undefined) {
+      summary.hoursTotal += record.hours_coding_this_week;
+      summary.hoursCount++;
+    }
+    if (record.confidence_1_5 !== null && record.confidence_1_5 !== undefined) {
+      summary.confidenceTotal += record.confidence_1_5;
+      summary.confidenceCount++;
+    }
+    if (record.laptop_ok === false) summary.laptopIssues++;
+  }
+
+  const average = (total, count) => (count === 0 ? null : Math.round((total / count) * 100) / 100);
+  return Object.fromEntries(
+    [...teams].map(([team, summary]) => [
+      team,
+      {
+        responses: summary.responses,
+        avgHours: average(summary.hoursTotal, summary.hoursCount),
+        avgConfidence: average(summary.confidenceTotal, summary.confidenceCount),
+        laptopIssues: summary.laptopIssues,
+      },
+    ])
+  );
 }
 
 module.exports = { summarizeByTeam };

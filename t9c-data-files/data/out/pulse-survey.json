@@ -1,0 +1,123 @@
+{
+  "source": "data/raw/pulse-survey.csv",
+  "generatedAt": "2026-10-27T18:42:21.570Z",
+  "recordCount": 10,
+  "summaryByTeam": {
+    "Beacon": {
+      "responses": 3,
+      "avgHours": 12,
+      "avgConfidence": 4,
+      "laptopIssues": 1
+    },
+    "Atlas": {
+      "responses": 3,
+      "avgHours": 11.5,
+      "avgConfidence": 4.33,
+      "laptopIssues": 0
+    },
+    "Comet": {
+      "responses": 3,
+      "avgHours": 7.25,
+      "avgConfidence": 2.67,
+      "laptopIssues": 2
+    },
+    "unassigned": {
+      "responses": 1,
+      "avgHours": 7,
+      "avgConfidence": 4,
+      "laptopIssues": 0
+    }
+  },
+  "records": [
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Josao Ramos",
+      "team": "Beacon",
+      "hours_coding_this_week": 10,
+      "confidence_1_5": 3,
+      "laptop_ok": true,
+      "comments": "Loved the API session, but need more time"
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Keisha Owens",
+      "team": "Atlas",
+      "hours_coding_this_week": null,
+      "confidence_1_5": 5,
+      "laptop_ok": true,
+      "comments": null
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Zoë Hart",
+      "team": "Comet",
+      "hours_coding_this_week": 8.5,
+      "confidence_1_5": 3,
+      "laptop_ok": false,
+      "comments": "Laptop fan is really loud"
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Andre Simmons",
+      "team": "Beacon",
+      "hours_coding_this_week": 15,
+      "confidence_1_5": null,
+      "laptop_ok": false,
+      "comments": null
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Luis Ortega",
+      "team": "Comet",
+      "hours_coding_this_week": 6,
+      "confidence_1_5": 2,
+      "laptop_ok": true,
+      "comments": "Struggling with async\r\nwould like a clinic"
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Priya Raman",
+      "team": "Atlas",
+      "hours_coding_this_week": 9,
+      "confidence_1_5": 4,
+      "laptop_ok": true,
+      "comments": null
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Maya Brooks",
+      "team": "Atlas",
+      "hours_coding_this_week": 14,
+      "confidence_1_5": 4,
+      "laptop_ok": true,
+      "comments": "Updated: forgot Saturday"
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "DeShawn Price",
+      "team": "Comet",
+      "hours_coding_this_week": null,
+      "confidence_1_5": 3,
+      "laptop_ok": false,
+      "comments": "Need Node 18"
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Nia Carter",
+      "team": "Beacon",
+      "hours_coding_this_week": 11,
+      "confidence_1_5": 5,
+      "laptop_ok": true,
+      "comments": null
+    },
+    {
+      "submitted_on": "2026-10-14",
+      "full_name": "Gabriela Ruiz",
+      "team": null,
+      "hours_coding_this_week": 7,
+      "confidence_1_5": 4,
+      "laptop_ok": true,
+      "comments": null
+    }
+  ]
+}

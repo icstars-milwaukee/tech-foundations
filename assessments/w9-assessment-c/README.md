@@ -4,53 +4,32 @@
 
 > Show you can build it, and show you can keep it from breaking.
 
-At the end of Week 9 you'll put together what you've practiced since Week 6: functions, AI, Agile, APIs, and data design. This page shows what you'll be asked to do, what to turn in, and what good work looks like, so nothing is a surprise.
+At the end of Week 9 you'll put together what you've practiced in Weeks 7–9: data, AI, and APIs. This page shows what you'll be asked to do, what to turn in, and what good work looks like, so nothing is a surprise.
 
 ## Why it matters
 
-- **You'll use these skills right away.** Sprint 2 and beyond need functions, data queries, and API calls working together.
+- **You'll use these skills right away.** Sprint 2 and beyond need data handling, AI, and API calls working together.
 - **Resilience counts as much as code.** Part of the work is planning for things to go wrong before they do.
 - **It shows you're ready for more.** This checkpoint is about combining several skills at once while still delivering.
 
 ## What to expect
 
-- **Five tasks**, about **20 minutes each**. They may be split across two sessions.
-- **Show your work.** You're scored on what's visible: working code with commits, AI output with your evaluation, an API script with parsed JSON, your ERD and SQL.
+- **Three tasks**, about **20 minutes each**. They may be split across two sessions.
+- **Show your work.** You're scored on what's visible: AI output with your evaluation log, an API script with parsed JSON, and a cleaned dataset with your notes, all with commits.
 - **The goal is Proficient (4).** Each task below includes the rubric row it's scored on. If you land at Limited or Emerging, you'll join a clinic. That's practice, not punishment.
 - **Finish with a short reflection** (see the end of this page).
 
-## Skills you'll show (Weeks 6–9)
+## Skills you'll show (Weeks 7–9)
 
 | Area | What you'll show |
 |---|---|
-| **Programming (PR)** | Write variables, loops, and conditionals; structure readable code; write and call reusable functions; handle errors and debug systematically. |
-| **Data (DA)** | Describe tables, rows, and relationships; write JOIN and GROUP BY queries; spot data quality issues. |
+| **Data Management (DM)** | Read and write CSV and JSON; clean and summarize structured data; model data with ERDs and SQL schemas. |
 | **AI** | Use AI in a workflow, then evaluate its output against a baseline, responsibly. |
 | **APIs** | Call endpoints, parse JSON, and handle errors and rate limits. |
 
 ---
 
-## Task 1: Write a Function
-
-**Your task:** Write a function that takes a list of integers and returns a list of only the positive even numbers, doubled. Add at least one error-handling condition. You'll start from a partly written function.
-
-**Turn in:** The function file in your repo, committed in three steps: **scaffold → feature → refactor**.
-
-**Proficient looks like:**
-
-- The function runs correctly, ignores negatives, and doubles positives.
-- Clean variable names and a readable structure.
-- At least 3 commits with meaningful messages.
-
-**Watch out for:** wrong values from incorrect logic · no error handling · one big "test commit".
-
-| Limited (1) | Emerging (2) | Developing (3) | Proficient (4) | Advanced (5) |
-|---|---|---|---|---|
-| Code does not run. | Runs but incorrect logic. | Handles some cases but misses conditions. | Runs correctly, ignores negatives, doubles positives; clean structure; ≥3 commits with meaningful messages. | Adds error handling, logging, comments, or scalability improvements; coaches peers in commit discipline. |
-
----
-
-## Task 2: AI Evaluation
+## Task 1: AI Evaluation
 
 **Your task:** Use AI to produce a summary of a dataset. Compare the AI output to a human-written baseline summary using at least two criteria (for example accuracy, completeness, bias, reliability). Then decide: **accept, edit, or reject**, and explain why.
 
@@ -71,26 +50,7 @@ At the end of Week 9 you'll put together what you've practiced since Week 6: fun
 
 ---
 
-## Task 3: Agile Backlog Refinement
-
-**Your task:** You'll get a few rough user stories (like "Login works" or "User can reset password"). Pick two and rewrite them as **"As a [role], I want [goal], so that [reason]."** Break each one into at least two tasks, estimate each task, and assign an owner.
-
-**Turn in:** A refined backlog with sprint-ready stories and tasks.
-
-**Proficient looks like:**
-
-- Stories rewritten clearly, with acceptance criteria.
-- At least 4–5 tasks, each with an owner and an estimate.
-
-**Watch out for:** stories left vague ("Fix login") · missing acceptance criteria · no estimates.
-
-| Limited (1) | Emerging (2) | Developing (3) | Proficient (4) | Advanced (5) |
-|---|---|---|---|---|
-| Cannot rewrite stories. | Rewrites 1 story vaguely. | Rewrites 2–3 stories with partial "As a …" format. | Refines 4–5 stories with clear format + acceptance criteria + estimates. | Anticipates dependencies; adds sprint-ready prioritization. |
-
----
-
-## Task 4: API Call
+## Task 2: API Call
 
 **Your task:** Call a practice API endpoint, parse the JSON response, and pull out the `title` field. Handle one simulated error, such as a network failure.
 
@@ -102,7 +62,7 @@ At the end of Week 9 you'll put together what you've practiced since Week 6: fun
 - A friendly error message is logged if the API fails.
 - The key lives in `.env`, and `.env` is **not** committed.
 
-**Watch out for:** no JSON parsing · hard-coded values · no error handling · secrets in your code.
+**Watch out for:** the call fails · no JSON parsing · hard-coded values · no error handling · secrets in your code.
 
 | Limited (1) | Emerging (2) | Developing (3) | Proficient (4) | Advanced (5) |
 |---|---|---|---|---|
@@ -110,28 +70,28 @@ At the end of Week 9 you'll put together what you've practiced since Week 6: fun
 
 ---
 
-## Task 5: ERD + Schema
+## Task 3: Data Pipeline Build
 
-**Your task:** Given a small scenario (for example: users place orders that contain many products), create an ERD with entities, attributes, and relationships. Then write CREATE TABLE statements for at least three entities, with primary keys and foreign keys.
-
-**Tip:** If you made a JSON schema or OpenAPI snippet in Week 7, reuse it.
+**Your task:** You'll get a raw CSV with some problems on purpose (missing headers, mixed types, nulls, a row with odd encoding). Import it, clean it so the columns and data types make sense, and export both a cleaned CSV and a JSON version. Add brief notes on what you cleaned and why. You'll get a runner script to start from, or instructions for the command line.
 
 **Turn in:**
 
-- `/design/erd.png` (or `.pdf` / `.drawio`)
-- `/sql/schema.sql` with your CREATE TABLE statements (PK/FK, types, NOT NULL)
+- `/data/raw.csv` → `/data/clean.csv` → `/data/export.json`
+- `/notes/data_cleaning_log.md` (what you cleaned, why, and how)
+- Your runner script(s) and a `README` at the repo root
 
 **Proficient looks like:**
 
-- Correct entities and relationships (one-to-many, and many-to-many through a join table).
-- Valid SQL with PK/FK, appropriate types, and NOT NULLs.
-- A short comment connecting your design choices to the scenario.
+- Missing headers handled; types and dates normalized; nulls removed or flagged.
+- The JSON export is valid.
+- Commits follow **scaffold → feature → refactor**.
+- Logging for the key steps: start, rows processed, anomalies found.
 
-**Watch out for:** missing relationships · vague types · no constraints.
+**Watch out for:** stopping at the raw CSV · invalid JSON · no cleaning log · no README.
 
 | Limited (1) | Emerging (2) | Developing (3) | Proficient (4) | Advanced (5) |
 |---|---|---|---|---|
-| No ERD. | Rough sketch; missing relationships. | Basic ERD; partial SQL. | ERD with correct entities/relationships + valid CREATE TABLEs (PK/FK, types, not null). | Normalizes schema (3NF), indexes critical lookups, check constraints; rationale notes. |
+| No attempt, or stops at the raw CSV. | Imports the CSV but little or no cleaning; JSON missing or invalid. | Some cleaning and a valid export, but misses issues; no cleaning log or README. | Handles missing headers, normalizes types/dates, removes or flags nulls; valid JSON export; cleaning log + README; scaffold → feature → refactor commits; logs key steps. | Makes the pipeline reusable (e.g., works on a new file); adds validation checks or a data quality summary. |
 
 ---
 
@@ -139,11 +99,9 @@ At the end of Week 9 you'll put together what you've practiced since Week 6: fun
 
 | Task | Review |
 |---|---|
-| Write a Function | [T7A: Functions, Errors & Debugging](../../t7a-functions-debugging/README.md) |
 | AI Evaluation | [T8A: AI Fundamentals I](../../t8a-ai-fundamentals/README.md) and [T8B: AI Integration](../../t8b-ai-integration/README.md) |
-| Agile Backlog | [T9B: Sprint 2 Rehearsal & Risks](../../t9b-sprint2-rehearsal/README.md) |
 | API Call | [T9A: APIs 101](../../t9a-apis-101/README.md) |
-| ERD + Schema | [T7B: From Stories to Design](../../t7b-stories-to-design/README.md) |
+| Data Pipeline Build | [T9C: Data in the Real World: Files](../../t9c-data-files/README.md) |
 
 ---
 
