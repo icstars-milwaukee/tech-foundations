@@ -3,13 +3,13 @@
   Copy this whole folder into its own repo first (see "Setup" below).
 -->
 
-# [Project name]: Community Program Data Pipeline
+# Community Program Data Pipeline
 
-**Author:** [your name] · **Date:** [date]
+**Author:** LaQuesha Bell · **Date:** 2026-10-29
 
 ## What this does
 
-[One or two sentences: what goes in, what comes out, and who would use it.]
+This pipeline imports a community signup export, normalizes messy field values, and exports a clean dataset for analysis. It is designed for program staff who need reliable records for reporting and follow-up.
 
 ```
 data/raw.csv  →  data/clean.csv  →  data/export.json
@@ -25,31 +25,22 @@ npm run pipeline
 
 ## What the pipeline cleans
 
-[A short list. Full details are in `notes/data_cleaning_log.md`.]
+Full details are in `notes/data_cleaning_log.md`.
 
-- 
-- 
-- 
+- Missing or blank CSV headers are renamed consistently.
+- Numeric fields are converted to integers or `null` when unknown.
+- Date fields are standardized to ISO `YYYY-MM-DD`.
+- Boolean-like values are normalized to `true` / `false` / `null`.
+- Blank values are preserved as `null`, while duplicate rows are skipped.
 
 ## Output
 
 | File | What's in it |
 |---|---|
-| `data/clean.csv` | [describe the columns and types] |
-| `data/export.json` | [describe the shape] |
+| `data/clean.csv` | A cleaned CSV with standardized column names and consistent values. |
+| `data/export.json` | An array of cleaned objects in JSON format for downstream tools and dashboards. |
 
 ## Known limitations
 
-[Anything you flagged instead of fixing, or assumptions you made, e.g. about date formats.]
-
----
-
-## Setup (delete this section when you're done)
-
-1. Copy this folder somewhere outside the course repo and open it in VS Code.
-2. `git init`, then commit the starter: `git commit -m "scaffold: starter pipeline"`.
-3. Make it work, then commit: `feature: clean and export data`.
-4. Tidy your code (names, small functions, comments), then commit: `refactor: ...`.
-5. Before you finish, run `npm run pipeline` one more time and check `data/export.json` opens without errors.
-
-The task: *Import this CSV, clean it so the columns and data types make sense, and export a cleaned CSV and a JSON version. Add brief notes of what you cleaned and why.*
+- Date parsing assumes common U.S. formats such as `MM/DD/YYYY` and month-name strings.
+- Unknown values become `null` rather than guessed, so manual review is still recommended when the source data is ambiguous.

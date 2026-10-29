@@ -1,17 +1,6 @@
-participant_id,first_name,program,,start_date,sessions_attended,completed,
-P001,Maya,Teen Coding Club,Washington Park,2026-09-08,12,yes,
-P002,Darnell,Adult Digital Skills,Mitchell Street,09/15/2026,twelve,no,
-P003,José,Homework Help,Sherman Park,Sep 22 2026,10,Y,
-P004,Keisha,Senior Tech Help,Bay View,2026-09-08,,no,
-P005,ZoÃ«,Teen Coding Club,Washington Park,9/29/26,8,TRUE,
-,,,,,,,
-P006,Andre,Adult Digital Skills,Mitchell Street,2026/10/06,NULL,N/A,
-
-P007,Lena,Homework Help,Sherman Park,2026-09-15, 7 ,yes,
-P008,Marcus,Teen Coding Club,,10/06/2026,11,no,
-P009,Tasha,Senior Tech Help,Bay View,2026-09-22,9,yes,
-P010,,Homework Help,Sherman Park,2026-09-29,6,no,
-P011,Rosa,Adult Digital Skills,Mitchell Street,Oct 13 2026,5,yes,
-P012,Kevin,Senior Tech Help,Bay View,N/A,3,,
-P013,Imani,Teen Coding Club,Washington Park,2026-10-13,4,no,
-P014,Luis,Homework Help,Sherman Park,10/13/2026,twelve,Y,
+P001,  Alice Nguyen  , 2026-09-08, 14, Youth Basketball, alice.nguyen@example.com
+P002, Brandon Lee, 09/15/2026, twelve, youth basketball, brandon.lee@gmail.com
+P003, Chloe Martinez, Sep 22 2026, 17, YOUTH BASKETBALL, chloe.martinez@school.org
+P004, Darius Smith, 9/29/26, 16, Music & Arts, user@comcast
+P005, Evan Patel, N/A, -1, STEM Lab, evan.patel@domain.com
+P001, Alice Nguyen, 2026-09-08, 14, Youth Basketball, alice.nguyen@example.com

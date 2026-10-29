@@ -1,0 +1,42 @@
+[
+  {
+    "id": "P001",
+    "name": "Alice Nguyen",
+    "signup_date": "2026-09-08",
+    "age": 14,
+    "program_name": "Youth Basketball",
+    "email": "alice.nguyen@example.com"
+  },
+  {
+    "id": "P002",
+    "name": "Brandon Lee",
+    "signup_date": "2026-09-15",
+    "age": 12,
+    "program_name": "Youth Basketball",
+    "email": "brandon.lee@gmail.com"
+  },
+  {
+    "id": "P003",
+    "name": "Chloe Martinez",
+    "signup_date": "2026-09-22",
+    "age": 17,
+    "program_name": "Youth Basketball",
+    "email": "chloe.martinez@school.org"
+  },
+  {
+    "id": "P004",
+    "name": "Darius Smith",
+    "signup_date": "2026-09-29",
+    "age": 16,
+    "program_name": "Music & Arts",
+    "email": "user@comcast"
+  },
+  {
+    "id": "P005",
+    "name": "Evan Patel",
+    "signup_date": null,
+    "age": null,
+    "program_name": "Stem Lab",
+    "email": "evan.patel@domain.com"
+  }
+]

@@ -1,8 +1,9 @@
-# Prompt Scaffold
+c# Prompt Scaffold
 
 Fill in every `[bracket]`, then paste the finished prompt into your AI tool. Save the exact prompt you used: it's evidence for your evaluation log.
 
 > **Before you paste anything:**
+>
 > - **No PII.** No names, emails, phone numbers, addresses, or IDs that point to a real person. This dataset has none. Keep it that way, and don't add your own.
 > - **Cite provenance.** Tell the AI where the data came from, and write it in your log too. If you can't say where data came from, don't send it.
 > - **Don't show the AI `baseline.md`.** You're testing whether the AI gets there on its own.
