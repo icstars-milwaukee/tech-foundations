@@ -1,0 +1,14 @@
+{
+  "name": "w9c-task-2-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, W9 Assessment C Task 2: API call",
+  "scripts": {
+    "start": "node --env-file=.env index.js",
+    "try:500": "node --env-file=.env index.js --fail=500",
+    "try:timeout": "node --env-file=.env index.js --fail=timeout"
+  },
+  "engines": {
+    "node": ">=20.6"
+  }
+}
