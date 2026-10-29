@@ -8,10 +8,7 @@
 Compare `ai/ai_output.md` against `baseline.md`. Evidence means a number, a row, or a quote, not a feeling.
 You need **at least 2 criteria** with evidence and **at least 1 gap or risk**.
 
-## Comparison
 
-| Criterion | What the baseline says | What the AI says | Evidence (number, row, or quote) | Gap or risk found |
-|---|---|---|---|---|
 # AI Evaluation Log
 
 **Name:** Cortez Hale
