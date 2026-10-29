@@ -10,27 +10,52 @@ Fill in every `[bracket]`, then paste the finished prompt into your AI tool. Sav
 ---
 
 ```text
-ROLE: You are a [role, e.g. "data analyst for a community nonprofit"].
+ROLE: You are a You are a data analyst for a community nonprofit.
 
-CONTEXT: The data below is [what it is, e.g. "weekly program attendance"].
-It comes from [provenance: who made it and how, from the baseline header].
+CONTEXT: The data below is weekly attendance information for four community programs from September 8 through October 13, 2026.
+It comes from [copy the data provenance from the baseline.md header].
 It contains no personal information.
 
-TASK: Write a summary of about [number] words for [audience, e.g. "a program manager"].
+TASK: Write a summary of about 200 words for a program manager.
 Include:
-- [what to report, e.g. "overall attendance rate"]
-- [what to report, e.g. "the strongest and weakest program"]
-- [what to report, e.g. "any data quality problems you notice"]
+- The overall attendance rate, using the total attended divided by total registered.
+- The strongest and weakest program based on attendance.
+- Any data quality problems you notice, including duplicates, inconsistent site names, missing values, and unusual attendance counts.
+
 
 RULES:
 - Only use numbers that are in the data. If you are not sure, say so.
-- [one more rule you think matters]
+- Do not silently correct, remove, or assume values; explain any cleaning decisions you recommend.
 
 DATA:
-[paste the contents of data/dataset.csv here]
-```
+week_start,site,program,age_group,registered,attended,notes
+2026-09-08,Washington Park Library,Teen Coding Club,13-17,24,18,
+2026-09-08,Mitchell Street Library,Adult Digital Skills,18+,20,15,
+2026-09-08,Sherman Park Rec Center,Homework Help,8-12,30,26,
+2026-09-08,Bay View Community Center,Senior Tech Help,60+,15,12,
+2026-09-15,Washington Park Library,Teen Coding Club,13-17,24,20,
+2026-09-15,Mitchell Street Library,Adult Digital Skills,18+,20,14,
+2026-09-15,Sherman Park Rec Center,Homework Help,8-12,30,24,
+2026-09-15,Bay View Community Center,Senior Tech Help,60+,15,13,
+2026-09-22,Washington Park Library,Teen Coding Club,13-17,24,17,
+2026-09-22,Mitchell Street Library,Adult Digital Skills,18+,20,16,
+2026-09-22,Mitchell Street Library,Adult Digital Skills,18+,20,16,
+2026-09-22,Sherman Park Rec Ctr,Homework Help,8-12,30,25,
+2026-09-22,Bay View Community Center,Senior Tech Help,60+,15,11,
+2026-09-29,Washington Park Library,Teen Coding Club,13-17,24,21,
+2026-09-29,Mitchell Street Library,Adult Digital Skills,18+,20,13,
+2026-09-29,Sherman Park Rec Center,Homework Help,8-12,30,27,
+2026-09-29,Bay View Community Center,Senior Tech Help,60+,15,0,site closed - power outage
+2026-10-06,Washington Park Library,Teen Coding Club,13-17,24,19,
+2026-10-06,Mitchell Street Library,Adult Digital Skills,18+,20,15,
+2026-10-06,Sherman Park Rec Center,Homework Help,8-12,30,,sign-in sheet not returned
+2026-10-06,Bay View Community Center,Senior Tech Help,60+,15,14,
+2026-10-13,Washington Park Library,Teen Coding Club,13-17,24,31,
+2026-10-13,Mitchell Street Library,Adult Digital Skills,18+,20,12,
+2026-10-13,Sherman Park Rec Center,Homework Help,8-12,30,22,
+2026-10-13,Bay View Community Center,Senior Tech Help,60+,15,13,
 
 ---
 
-**Tool used:** [e.g. Copilot, ChatGPT, Claude]
-**Date and time:** [when you ran it]
+**Tool used:** ChatGPT (GPT-6)
+**Date and time:** 1:18pm
