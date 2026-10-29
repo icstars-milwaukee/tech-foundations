@@ -5,12 +5,11 @@
 
 # [Project name]: Community Program Data Pipeline
 
-**Author:** [your name] · **Date:** [date]
+**Author:** Luke Vang · **Date:** 10/29/26
 
 ## What this does
 
-[One or two sentences: what goes in, what comes out, and who would use it.]
-
+Raw data gets put into a clean.csv which cleans the data and makes it easier to read. That clean data then moves and is converted into JSON so that other programs can use that data.
 ```
 data/raw.csv  →  data/clean.csv  →  data/export.json
 ```
