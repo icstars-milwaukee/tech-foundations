@@ -1,17 +1,9 @@
 # AI Output
 
-<!--
-INSTRUCTIONS (delete this block when you're done)
-1. Fill in prompt-scaffold.md and run it in your AI tool.
-2. Paste the AI's response below EXACTLY as it came back. Don't fix typos or numbers.
-   Your corrections go in evaluation_log.md, not here.
-3. Fill in the three lines at the top.
--->
-
-**Tool used:** 
-**Date and time:** 
-**Prompt used:** (paste it, or write "see prompt-scaffold.md")
+**Tool used:** Copilot (AI assistant in VS Code)
+**Date and time:** October 29, 2026
+**Prompt used:** See `prompt-scaffold.md`
 
 ---
 
-(paste the AI output here)
+Across 22 usable, nonduplicate sessions, 398 people attended out of 489 registered seats, an 81.4% attendance rate. Teen Coding Club had the highest rate at 87.5%; Adult Digital Skills had the lowest at 70.8%, with attendance falling to 12 on Oct 13 after earlier counts of 13–16. The Sept 29 Senior Tech Help zero reflects a site closure, and the Oct 6 Homework Help count is missing, so neither should be treated as an ordinary attendance result. The Sept 22 Adult Digital Skills row is duplicated. Verify Teen Coding Club’s Oct 13 count of 31 against 24 registered, and standardize the Sherman Park site name, which appears once as “Rec Ctr.”

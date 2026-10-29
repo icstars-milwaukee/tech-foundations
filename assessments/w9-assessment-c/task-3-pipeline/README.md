@@ -5,7 +5,7 @@
 
 # [Project name]: Community Program Data Pipeline
 
-**Author:** [your name] · **Date:** [date]
+**Author:** LaQuesha · **Date:** October 29,2026
 
 ## What this does
 
