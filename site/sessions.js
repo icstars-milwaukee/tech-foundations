@@ -37,7 +37,7 @@ window.TF = {
         { code: "T9B", folder: "t9b-sprint2-rehearsal", title: "Sprint 2 Rehearsal & Risks", minutes: 60, summary: "Refine the backlog, register risks, and rehearse the demo." },
         { code: "T9C", folder: "t9c-data-files", title: "Data in the Real World: Files", minutes: 60, summary: "Clean a messy CSV into a clean CSV and JSON, with a log." },
       ],
-      milestone: { title: "Performance Assessment C", detail: "Write a function, evaluate AI, refine a backlog, call an API, design a schema.", path: "assessments/w9-assessment-c/README.md" },
+      milestone: { title: "Performance Assessment C", detail: "Evaluate AI output, call an API, build a data pipeline.", path: "assessments/w9-assessment-c/README.md" },
     },
     {
       week: 10,
