@@ -1,0 +1,8 @@
+Release check for v1.5.0 at http://localhost:5000
+Run at 2026-11-02T19:38:07.608Z with 60 requests
+
+[PASS] Health check returns 200: 200 (target 200)
+[FAIL] Error rate: 10% (target < 2%)
+[FAIL] p95 latency: 612ms (target < 300ms)
+
+VERDICT: ROLLBACK. A success criterion failed. Follow your rollback steps.
