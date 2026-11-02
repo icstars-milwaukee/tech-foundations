@@ -1,0 +1,8 @@
+Release check for v1.4.0 at http://localhost:5000
+Run at 2026-11-02T20:02:11.052Z with 60 requests
+
+[PASS] Health check returns 200: 200 (target 200)
+[PASS] Error rate: 0% (target < 2%)
+[PASS] p95 latency: 68ms (target < 300ms)
+
+VERDICT: GO. Release meets every success criterion.
