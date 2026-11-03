@@ -1,0 +1,9 @@
+Deployment verification for v1.1.0 at http://localhost:8090
+Run at 2026-11-03T20:00:13.541Z
+
+[PASS] Home page loads (status 200)
+[PASS] Health check says ok (status 200, {"status":"ok","version":"1.1.0","uptimeSeconds":10})
+[PASS] Running version is 1.1.0 (running 1.1.0)
+[PASS] API returns events (4 events)
+
+RESULT: VERIFIED

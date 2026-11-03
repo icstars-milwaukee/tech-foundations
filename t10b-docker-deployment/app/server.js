@@ -25,6 +25,7 @@ const HOST = process.env.HOST || "0.0.0.0";
 const started = Date.now();
 
 const EVENTS = [
+  { id: "evt-304", title: "Docker Deployment Workshop", date: "2026-11-10", room: "Room 204" },
   { id: "evt-303", title: "Alumni Panel: First Year in Tech", date: "2026-10-22", room: "Main Hall" },
   { id: "evt-302", title: "Resume Lab", date: "2026-10-28", room: "Room 204" },
   { id: "evt-301", title: "Sprint 2 Demo Day", date: "2026-11-06", room: "Main Hall" },
