@@ -1,0 +1,5 @@
+Read: 8
+Skipped (no email): 1
+Skipped (not attending): 2
+Skipped (duplicate): 1
+Kept: 4

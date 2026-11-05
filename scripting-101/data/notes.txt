@@ -1,0 +1,5 @@
+Welcome to i.c.stars Milwaukee.
+Today we learn scripting.
+
+Scripts save time by doing boring work for you.
+Computers do not get bored.

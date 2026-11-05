@@ -1,0 +1,11 @@
+Hours by intern
+  Marcus: 11.00
+  Priya: 8.25
+  Ava: 7.00
+Hours by task
+  Project work: 16.75
+  Study hall: 5.50
+  Code review: 2.50
+  Standup: 1.50
+Total: 26.25
+Average per entry: 2.19

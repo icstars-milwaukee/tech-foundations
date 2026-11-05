@@ -1,0 +1,5 @@
+Lines: 5
+Non-empty lines: 4
+Words: 22
+Characters: 135
+Longest line: "Scripts save time by doing boring work for you."

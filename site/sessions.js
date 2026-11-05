@@ -78,5 +78,6 @@ window.TF = {
   ],
   resources: [
     { title: "Git for Teams", path: "gitforteams/README.md", summary: "Branches, pull requests, and merge conflicts as a team." },
+    { title: "Scripting 101", path: "scripting-101/README.md", summary: "Seven fill-in-the-blank Node scripts: CSV to JSON, cleaning, summarizing, and organizing files." },
   ],
 };

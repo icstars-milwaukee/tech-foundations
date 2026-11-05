@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Ava Johnson",
+    "email": "ava@example.com",
+    "track": "Software",
+    "score": 88
+  },
+  {
+    "name": "Marcus Lee",
+    "email": "marcus@example.com",
+    "track": "Data",
+    "score": 92
+  },
+  {
+    "name": "Priya Patel",
+    "email": "priya@example.com",
+    "track": "Software",
+    "score": 75
+  },
+  {
+    "name": "Darnell Brooks",
+    "email": "darnell@example.com",
+    "track": "Cloud",
+    "score": 81
+  },
+  {
+    "name": "Sofia Ramirez",
+    "email": "sofia@example.com",
+    "track": "Data",
+    "score": 95
+  }
+]
