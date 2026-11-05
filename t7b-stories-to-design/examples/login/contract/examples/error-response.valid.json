@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "INVALID_LOGIN",
+    "message": "Invalid email or password"
+  }
+}

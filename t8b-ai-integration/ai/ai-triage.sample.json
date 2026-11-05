@@ -1,0 +1,13 @@
+[
+  { "id": "T-101", "category": "hardware", "priority": "normal", "summary": "Screen flickers and goes black with multiple browser tabs open", "needsHuman": false },
+  { "id": "T-102", "category": "account", "priority": "urgent", "summary": "Locked out of CohortHub before a client demo", "needsHuman": false },
+  { "id": "T-103", "category": "network", "priority": "normal", "summary": "Room 204 wifi drops every 10 minutes", "needsHuman": false },
+  { "id": "T-104", "category": "software", "priority": "low", "summary": "Prettier extension install fails with XHR error", "needsHuman": false },
+  { "id": "T-105", "category": "software", "priority": "low", "summary": "Wants Node 18 installed, asked to be texted at 414-555-0199", "needsHuman": false },
+  { "id": "T-106", "category": "hardware", "priority": "low", "summary": "Laptop battery issue", "needsHuman": false },
+  { "id": "T-107", "category": "account", "priority": "low", "summary": "Requests display name change", "needsHuman": false },
+  { "id": "T-108", "category": "network", "priority": "normal", "summary": "GitHub unreachable over VPN, other sites work", "needsHuman": false },
+  { "id": "T-109", "category": "hardware", "priority": "low", "summary": "Sticky E key", "needsHuman": false },
+  { "id": "T-110", "category": "security", "priority": "urgent", "summary": "Entered password on a likely phishing site", "needsHuman": true },
+  { "id": "T-111", "category": "software", "priority": "normal", "summary": "Excel crashes opening attendance CSV", "needsHuman": false }
+]

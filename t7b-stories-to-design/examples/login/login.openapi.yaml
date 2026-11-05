@@ -1,0 +1,81 @@
+# The login interface written as OpenAPI 3.1.
+# Same contract as contract/*.schema.json, in the format you'll use for real APIs in Week 9.
+# Paste this into https://editor.swagger.io to see it rendered as API docs.
+
+openapi: 3.1.0
+info:
+  title: CohortHub Auth API
+  version: 0.1.0
+paths:
+  /api/auth/login:
+    post:
+      summary: Log in with email and password
+      description: "Story: As a returning intern, I want to log in with my email and password, so that I can see my CohortHub dashboard."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+            example:
+              email: jordan@example.com
+              password: correct-horse-42
+      responses:
+        "200":
+          description: Logged in. The frontend stores the token and opens the Dashboard.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        "400":
+          description: A field is missing.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Email or password is wrong. The message never says which one.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+      required: [email, password]
+      additionalProperties: false
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required: [id, name]
+      required: [token, user]
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum: [MISSING_FIELDS, INVALID_LOGIN]
+            message:
+              type: string
+          required: [code, message]
+      required: [error]

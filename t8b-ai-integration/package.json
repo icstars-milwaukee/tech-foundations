@@ -1,0 +1,16 @@
+{
+  "name": "t8b-ai-integration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T8B: AI Integration in Projects",
+  "scripts": {
+    "test": "node --test test/redact.test.js",
+    "prepare:prompt": "node prototype/prepare.js",
+    "evaluate": "node prototype/evaluate.js",
+    "evaluate:sample": "node prototype/evaluate.js --sample",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

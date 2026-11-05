@@ -1,0 +1,17 @@
+{
+  "name": "t11a-demo-engineering",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T11A: Demo Engineering",
+  "scripts": {
+    "sandbox:api": "node sandbox/mini-api.js",
+    "sandbox:app": "node sandbox/demo-app.js",
+    "chaos": "node tools/chaos-proxy.js",
+    "gate": "node tools/gate.js",
+    "burndown": "node tools/burndown.js",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,3 @@
+# raw.csv is dirty ON PURPOSE (Latin-1 bytes, Windows line endings).
+# "binary" tells git never to convert or "fix" it.
+data/raw.csv binary

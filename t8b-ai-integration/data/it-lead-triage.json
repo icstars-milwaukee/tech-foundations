@@ -1,0 +1,19 @@
+{
+  "triagedBy": "CohortHub IT lead (human, no AI)",
+  "minutesSpent": 25,
+  "note": "This is the BASELINE. It's what a person decided last week, by hand. It's a good answer, not a perfect one.",
+  "tickets": [
+    { "id": "T-101", "category": "hardware", "priority": "normal" },
+    { "id": "T-102", "category": "account", "priority": "urgent" },
+    { "id": "T-103", "category": "network", "priority": "urgent" },
+    { "id": "T-104", "category": "software", "priority": "low" },
+    { "id": "T-105", "category": "software", "priority": "urgent" },
+    { "id": "T-106", "category": "hardware", "priority": "urgent" },
+    { "id": "T-107", "category": "account", "priority": "low" },
+    { "id": "T-108", "category": "network", "priority": "normal" },
+    { "id": "T-109", "category": "hardware", "priority": "low" },
+    { "id": "T-110", "category": "account", "priority": "urgent" },
+    { "id": "T-111", "category": "software", "priority": "normal" },
+    { "id": "T-112", "category": "network", "priority": "low" }
+  ]
+}

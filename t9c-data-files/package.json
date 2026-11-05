@@ -1,0 +1,15 @@
+{
+  "name": "t9c-data-files",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T9C: Data in the Real World: Working with Files",
+  "scripts": {
+    "pipeline": "node pipeline/run.js",
+    "pipeline:validate": "node pipeline/run.js --validate",
+    "test": "node --test test/clean.test.js",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

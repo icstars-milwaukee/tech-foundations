@@ -1,0 +1,14 @@
+{
+  "name": "t12a-portfolio-packaging",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T12A: Portfolio Artifacts & Technical Packaging",
+  "scripts": {
+    "audit": "node tools/audit-repo.js",
+    "audit:examples": "node tools/audit-repo.js examples/weak-repo examples/strong-repo",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

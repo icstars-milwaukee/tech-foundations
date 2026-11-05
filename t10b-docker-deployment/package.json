@@ -1,0 +1,14 @@
+{
+  "name": "t10b-docker-deployment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "i.c.stars Tech Foundations, Session T10B: Deployment Phase Using Docker",
+  "scripts": {
+    "app:local": "node app/server.js",
+    "verify": "node scripts/verify-deploy.js",
+    "check": "node scripts/check-artifact.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

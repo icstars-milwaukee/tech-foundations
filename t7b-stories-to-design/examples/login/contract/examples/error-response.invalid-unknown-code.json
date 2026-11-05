@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "WRONG_PASSWORD",
+    "message": "That password is wrong"
+  }
+}

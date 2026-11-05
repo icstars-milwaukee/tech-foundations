@@ -1,0 +1,78 @@
+{
+  "source": "CohortHub support inbox export (practice data, all people are made up)",
+  "exportedOn": "2026-10-19",
+  "tickets": [
+    {
+      "id": "T-101",
+      "submittedBy": "Marcus Bell",
+      "email": "marcus.bell@cohorthub.test",
+      "description": "My laptop screen flickers and goes black when I open more than two Chrome tabs. Started yesterday."
+    },
+    {
+      "id": "T-102",
+      "submittedBy": "Keisha Owens",
+      "email": "keisha.owens@cohorthub.test",
+      "description": "Locked out of CohortHub after 3 wrong passwords. Our client demo is in 2 hours and I'm presenting. My student ID is 20261187."
+    },
+    {
+      "id": "T-103",
+      "submittedBy": "Tom Nguyen",
+      "email": "tom.nguyen@cohorthub.test",
+      "description": "Wifi in room 204 drops every 10 minutes. The whole team is affected and we can't push to GitHub."
+    },
+    {
+      "id": "T-104",
+      "submittedBy": "Aaliyah Grant",
+      "email": "aaliyah.grant@cohorthub.test",
+      "description": "VS Code won't install the Prettier extension. It says 'XHR failed'. Not blocking me, I can format by hand."
+    },
+    {
+      "id": "T-105",
+      "submittedBy": "DeShawn Price",
+      "email": "deshawn.price@cohorthub.test",
+      "description": "need node 18 not 16 pls help cant run the project at all. txt me 414-555-0199"
+    },
+    {
+      "id": "T-106",
+      "submittedBy": "Gabriela Ruiz",
+      "email": "gabriela.ruiz@cohorthub.test",
+      "description": "La batería de mi laptop no carga. Ya probé otro cargador y tampoco funciona. Me queda 10% y no puedo trabajar sin ella."
+    },
+    {
+      "id": "T-107",
+      "submittedBy": "Jonathan Weiss",
+      "email": "jonathan.weiss@cohorthub.test",
+      "description": "Can I change my display name from Jonathan to Jo? No rush."
+    },
+    {
+      "id": "T-108",
+      "submittedBy": "Priya Raman",
+      "email": "priya.raman@cohorthub.test",
+      "description": "VPN connects but GitHub won't load. Other sites work fine. Call me at (414) 555-0142 if easier."
+    },
+    {
+      "id": "T-109",
+      "submittedBy": "Luis Ortega",
+      "email": "luis.ortega@cohorthub.test",
+      "description": "The E key on my keyboard sticks sometimes. Not a big deal."
+    },
+    {
+      "id": "T-110",
+      "submittedBy": "Nia Carter",
+      "email": "nia.carter@cohorthub.test",
+      "description": "I got an email asking me to confirm my CohortHub password at cohorthub-login.co. I already clicked it and typed my password. Is that bad?"
+    },
+    {
+      "id": "T-111",
+      "submittedBy": "Dana Kowalski",
+      "email": "dana.kowalski@cohorthub.test",
+      "description": "Excel crashes every time I open the attendance CSV from the shared drive. Email me at dana.k.mke@cohorthub.test if you need the file."
+    },
+    {
+      "id": "T-112",
+      "submittedBy": "Andre Simmons",
+      "email": "andre.simmons@cohorthub.test",
+      "description": "Ethernet port at desk 7 doesn't work, but wifi is fine so no rush."
+    }
+  ]
+}
