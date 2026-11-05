@@ -1,0 +1,6 @@
+[
+  { "title": "Resume Workshop", "date": "2026-11-10", "room": "Lab A", "seats": 20 },
+  { "title": "Mock Interviews", "date": "2026-11-12", "room": "Lab B", "seats": 12 },
+  { "title": "Git Office Hours", "date": "2026-11-14", "room": "Lab A", "seats": 15 },
+  { "title": "Demo Day, Dry Run", "date": "2026-11-18", "room": "Main Hall", "seats": 60 }
+]
