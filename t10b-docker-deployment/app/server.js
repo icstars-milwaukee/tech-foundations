@@ -38,11 +38,11 @@ function log(level, message) {
 
 function page() {
   const rows = EVENTS.map((e) => `<li><strong>${e.title}</strong>: ${e.date}, ${e.room}</li>`).join("");
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CohortHub Events</title>
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>CohortHub Events: Cycle 21</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>body{font-family:system-ui,sans-serif;max-width:40rem;margin:2rem auto;padding:0 1rem;line-height:1.5}
 footer{color:#666;font-size:.85rem;margin-top:2rem}</style></head>
-<body><h1>CohortHub Events</h1><ul>${rows}</ul>
+<body><h1>CohortHub Events: Cycle 21</h1><ul>${rows}</ul>
 <footer>Version ${version}</footer></body></html>`;
 }
 

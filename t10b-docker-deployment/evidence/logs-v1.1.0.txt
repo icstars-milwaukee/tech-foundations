@@ -1,0 +1,6 @@
+[2026-11-05T03:17:08.752Z] [INFO] CohortHub Events v1.1.0 listening on http://0.0.0.0:8080
+[2026-11-05T03:17:13.625Z] [INFO] GET /health -> 200 (4ms)
+[2026-11-05T03:17:19.658Z] [INFO] GET / -> 200 (1ms)
+[2026-11-05T03:17:19.682Z] [INFO] GET /health -> 200 (1ms)
+[2026-11-05T03:17:19.686Z] [INFO] GET /api/events -> 200 (1ms)
+[2026-11-05T03:17:19.908Z] [INFO] GET / -> 200 (0ms)

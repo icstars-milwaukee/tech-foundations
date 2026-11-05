@@ -1,10 +1,14 @@
 # Files Docker should NEVER copy into the image.
 # Anything in the image can be read by anyone who has the image.
 
-# TODO: add the three most important lines:
-#   - your secrets file
-#   - installed dependencies (they get reinstalled inside the image)
-#   - git history
+# Secrets file
+.env
+
+# Installed dependencies (they get reinstalled inside the image)
+node_modules
+
+# Git history
+.git
 
 .DS_Store
 npm-debug.log
