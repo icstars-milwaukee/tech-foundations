@@ -27,8 +27,8 @@ Each step: what the driver does, what the narrator says, what the room should se
 
 | # | Driver does | Narrator says (one line) | Room sees | Time (sec) | If it fails |
 |---|---|---|---|---|---|
-| 1 |  |  |  |  |  |
-| 2 |  |  |  |  |  |
+| 1 | Click through the slides. |Whoever's slides are on  |Information  |Couple of minutes  | If slides fail to load/connect team readjusts, everyone knows thier information even without visuals |
+| 2 | Preview the tech arcitechture in 3d model and 2d model |  |  |  |  |
 | 3 |  |  |  |  |  |
 | 4 |  |  |  |  |  |
 | 5 |  |  |  |  |  |
