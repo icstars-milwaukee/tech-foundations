@@ -30,7 +30,7 @@ Each step: what the driver does, what the narrator says, what the room should se
 | 1 | Click through the slides. |Whoever's slides are on  |Information  |Couple of minutes  | If slides fail to load/connect team readjusts, everyone knows thier information even without visuals |
 | 2 | Preview the tech arcitechture in 3d model and 2d model | An explaination of the tech stack and how our product uses it | A model of our tech stack | 3 minutes | If this fails there are fortunately other models of our tech stack as a fails safe within our slides. |
 | 3 |  |  |  |  |  |
-| 4 |  |  |  |  |  |
+| 4 |Assign tickets  | An explanation of the ticket assigning system  | How tickets are assigned | <1 minute | It will not fail |
 | 5 |  |  |  |  |  |
 
 ## Offline / mock data fallback
