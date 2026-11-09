@@ -4,5 +4,6 @@
   "description": "Scripting 101: fill-in-the-blank Node.js exercises. No dependencies.",
   "scripts": {
     "check": "node check.js all"
-  }
+  },
+  "type": "module"
 }
