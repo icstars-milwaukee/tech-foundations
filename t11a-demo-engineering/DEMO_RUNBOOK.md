@@ -27,20 +27,21 @@ Each step: what the driver does, what the narrator says, what the room should se
 
 | # | Driver does | Narrator says (one line) | Room sees | Time (sec) | If it fails |
 |---|---|---|---|---|---|
-| 1 |  |  |  |  |  |
-| 2 |  |  |  |  |  |
-| 3 |  |  |  |  |  |
-| 4 |  |  |  |  |  |
-| 5 |  |  |  |  |  |
+| 1 | Opens slide deck | "Hello everyone, we are Unity Forward Solutions"  | Photos of team | 30 secs  | We'll just speak |
+| 2 | Talks about the problem the client brought us | "Here's the problem you gave us" | A slide | 1min 15sec | we go to a backup computer |
+| 3 | Who did what on the team | "We'll now speak about the work we did" | A slide | 1 min 30 secs | We go to print outs. |
+| 4 | Navigates to next slide, what we promised | "We'll now talk about what we promised" | A slide | 1 min 30 secs | Go to printouts or backup laptop |
+| 5 | Navigates to app, shares app on projector | "The moment you've finally been waiting for" | Applicaiton home page | 5 mins | back up computer / print outs / local app (instead of live deployment) |
 
 ## Offline / mock data fallback
 
-- **How the app switches to offline or mock data:** 
-- **How the audience can tell (banner, label):** 
-- **What the narrator says when it happens:** 
+- **How the app switches to offline or mock data:** A separate tab with the offline app is already pulled up and ready to go
+- **How the audience can tell (banner, label):** We will say so.
+- **What the narrator says when it happens:** "We'll now demonstrate how the app looks"
 
 ```bash
 # TODO: exact commands to switch to offline mode, and back
+# There are no commands needed for this
 ```
 
 ## Failure injection results
