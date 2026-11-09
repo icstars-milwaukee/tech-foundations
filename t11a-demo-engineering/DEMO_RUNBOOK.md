@@ -1,14 +1,14 @@
 # Demo Runbook
 
-**Team:** 
-**Project:** 
+**Team: TEQ Solutions 
+**Project: Molson Coors Project
 **Demo length (minutes):** 
 
 ## Roles
 
-- **Driver (keyboard + mouse):** 
-- **Narrator (talks to the room):** 
-- **Backup (watches the clock, runs the fallback, takes over if someone freezes):** 
+- **Driver (keyboard + mouse): Luke 
+- **Narrator (talks to the room): Q, Luke, Ventura 
+- **Backup (watches the clock, runs the fallback, takes over if someone freezes): We will have two laptop.
 
 ## Quality gate (before EVERY run, including rehearsals)
 
