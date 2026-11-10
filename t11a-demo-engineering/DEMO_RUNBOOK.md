@@ -29,9 +29,9 @@ Each step: what the driver does, what the narrator says, what the room should se
 |---|---|---|---|---|---|
 | 1 | Click through the slides. |Whoever's slides are on  |Information  |Couple of minutes  | If slides fail to load/connect team readjusts, everyone knows thier information even without visuals |
 | 2 | Preview the tech arcitechture in 3d model and 2d model | An explaination of the tech stack and how our product uses it | A model of our tech stack | 3 minutes | If this fails there are fortunately other models of our tech stack as a fails safe within our slides. |
-| 3 |  |  |  |  |  |
+| 3 | Log in with the demo account and submit a new ticket | How a Molson Coors employee reports an issue and gets a ticket created | The ticket form filled out, then the new ticket showing up in the queue | 1 minute | Use a ticket we already made before the demo that is sitting in the queue, or show the screenshot in our slides |
 | 4 |Assign tickets  | An explanation of the ticket assigning system  | How tickets are assigned | <1 minute | It will not fail |
-| 5 |  |  |  |  |  |
+| 5 | Mark the assigned ticket as resolved and go back to the dashboard, then open it up for questions | How a ticket gets closed out and how everyone can see its status, then a quick recap of what we built | The ticket status change to resolved and the dashboard update | 1-2 minutes | Switch to the backup laptop, or show the screenshots in our slides and go straight into the recap and Q&A |
 
 ## Offline / mock data fallback
 
