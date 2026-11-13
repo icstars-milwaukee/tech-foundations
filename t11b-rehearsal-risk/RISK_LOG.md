@@ -1,6 +1,6 @@
 # Risk Log
 
-**Team:** 
+**Team:** UFS: Unity Forward Solutions
 
 Start from your T9B risk register. A risk log is **alive**: every week, update the status, add what's new, close what's gone. Note what changed so readers can see movement.
 
@@ -10,8 +10,13 @@ Start from your T9B risk register. A risk log is **alive**: every week, update t
 
 | ID | Risk (If ___, then ___) | Probability | Impact | Mitigation | Owner | Status | Source | What changed since last update |
 |---|---|---|---|---|---|---|---|---|
-| R-1 |  |  |  |  |  |  |  |  |
-| R-2 |  |  |  |  |  |  |  |  |
-| R-3 |  |  |  |  |  |  |  |  |
-| R-4 |  |  |  |  |  |  |  |  |
-| R-5 |  |  |  |  |  |  |  |  |
+| R-1 | If a team member is out or drops off before the presentation, then their part of the demo and the code they own has no one to cover it | Low | High | Check in with each team member before demo day and divide the work. Every step of the demo script has a second person who knows it. | All | Open | T9B | Unchanged. The app is now split into documented areas (docs/TEAM_GUIDE.md), so a teammate can pick up work more easily. |
+| R-2 | If a laptop doesn't work on demo day, then we can't run or show the app | High | Medium | Have the project on all laptops. The hosted copy on Render is the backup: sign in from any browser. | All | Mitigated | T9B | Mitigated. The app now runs in Docker (docker compose) and is also hosted on Render, so a second way in exists. Still check that each laptop has Docker Desktop and a working .env. |
+| R-3 | If the app malfunctions during the demo, then the room sees a broken page instead of the story | Medium | Medium | Tests run and pass before the demo: 196 API tests and the web tests, run by CI on every pull request. Run through the demo script once on the demo laptop right before presenting. | Jose | Open | T9B | Probability stays Medium. Four feature merges landed between Nov 12 and Nov 13 (UX pass, feedback survey, AI data split), so code is still changing close to the demo. |
+| R-4 | If the AI runs out of tokens or the API key has no credit, then the AI Assistant can't answer during the demo | Low | Medium | Put money in the AI account (at least $1 in credit) and check the key works on demo morning. Rollback: autopay set up to re-up the tokens. | All | Open | T9B | The app also has a rate limit and a daily token limit, so the AI page can stop answering even when credit is fine. Reset the count and test it on demo morning. |
+| R-5 | If the internet connection is unstable, then the hosted site and the AI can't load | Low | High | Have a hotspot on your phone ready to run. Run the app locally in Docker so the normal pages don't need the internet. The AI Assistant is the only part that needs the internet. | All | Open | T9B | Added the local Docker option as a fallback. The AI Assistant has no offline mode, so the narrator needs a line for that (see R-9). |
+| R-6 | If the hosted site is on the Render free plan, then it sleeps after 15 minutes idle and takes about a minute to wake, so the first page load during the demo looks frozen | High | Medium | Open the site 5 minutes before presenting and click through it. Or switch the plan lines in render.yaml to paid before the demo. | Jose | Open | team | New. Found while reading docs/DEPLOY.md. |
+| R-7 | If the free Render database is more than 30 days old, then it is deleted and Home and Dashboards are empty | Medium | High | Check the database creation date on Render. Upgrade to a paid database, or re-import the six CSV files through the admin Import page before the demo. | Jose | Open | team | New. Found while reading docs/DEPLOY.md. |
+| R-8 | If the AI Assistant is asked about real MCBC tickets, then it can only answer about made-up tickets (INC9xxxxxx), which can confuse the client | Medium | High | Say out loud at the start of the AI step that the AI reads demonstration tickets only, by design (docs/DATA_BOUNDARY.md). Ask demo questions that match the made-up data. | Jose | Open | team | New. The real data was taken out of the AI on Nov 13 (commit 200b475). |
+| R-9 | If the AI answer is slow or the AI call fails live, then there is a long silence on screen | Medium | Medium | Use a recovery line ("While that loads, here's how the AI picks a tool"). Open the "How I got this" panel from an earlier answer, or move to the next demo step. | All | Open | team | New. Answer time is now logged, so we can see how long it takes. |
+| R-10 | If a scheduled report email is shown in the demo, then nothing is sent, because no mail service is connected | Medium | Low | Don't promise email in the demo. Show the saved report and the CSV download instead. | Jose | Open | team | New. Found while reading docs/DEPLOY.md. |
