@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "scripting-101",
   "private": true,
   "description": "Scripting 101: fill-in-the-blank Node.js exercises. No dependencies.",

@@ -23,6 +23,7 @@
 // STEP 1 — Bring in Node's file system module so you can read files.
 //   Look up: require(), the node:fs module
 
+import fs from "node:fs";
 
 
 // STEP 2 — Read data/notes.txt into ONE string. You want text, not raw bytes.
@@ -30,10 +31,14 @@
 //   Try it: console.log the string. Do you see the file's contents?
 
 
+fs.readFileSync("data/notes.txt")
+
+const filecontents = fs.readFileSync("data/notes.txt", "utf-8");
+console.log(filecontents);
 
 // STEP 3 — The number of characters is just the string's length. Save it.
 //   Look up: String length
-
+console.log(filecontents.length);   
 
 
 // STEP 4 — Break the string into an array of lines.
@@ -41,8 +46,15 @@
 //   Watch out: the file ends with a newline. Does that give you an extra
 //   empty "line" at the end? If so, remove it.
 //   Look up: Array.prototype.pop
+const array1 = filecontents.split("\n");
+console.log(array1);
+
+array1.pop();
 
 
+//console.log(poppedline);
+
+console.log(array1);
 
 // STEP 5 — Count the lines. Then count only the lines that are NOT blank.
 //   Look up: Array length, Array.prototype.filter, String.prototype.trim
