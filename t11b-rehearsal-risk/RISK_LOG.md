@@ -1,6 +1,6 @@
 # Risk Log
 
-**Team:** 
+**Team:** TEQ Solutions (Molson Coors project: OneTouch)
 
 Start from your T9B risk register. A risk log is **alive**: every week, update the status, add what's new, close what's gone. Note what changed so readers can see movement.
 
@@ -8,10 +8,15 @@ Start from your T9B risk register. A risk log is **alive**: every week, update t
 - **Status:** Open · Mitigated · Happened · Closed
 - **Source:** T9B, rehearsal round 1, rehearsal round 2, client, trainer, peer team
 
+Last updated: 2026-11-13. Facts below come from our T9B risk register, the T11A demo runbook and the T11A defect burndown (technical run on a test copy, 2026-11-09). No team rehearsal has been logged yet, so rounds 1 and 2 are not used as a source.
+
 | ID | Risk (If ___, then ___) | Probability | Impact | Mitigation | Owner | Status | Source | What changed since last update |
 |---|---|---|---|---|---|---|---|---|
-| R-1 |  |  |  |  |  |  |  |  |
-| R-2 |  |  |  |  |  |  |  |  |
-| R-3 |  |  |  |  |  |  |  |  |
-| R-4 |  |  |  |  |  |  |  |  |
-| R-5 |  |  |  |  |  |  |  |  |
+| R-1 | If the venue internet drops, then the public link (onetouch.fyi) and every new AI question stop working mid-demo | Medium | Medium | OneTouch runs on the server laptop, so the driver opens http://localhost:8000 and carries on. Saved answers still work, `DEMO_MODE=offline` is the emergency switch, hotspot on standby | Entire Team | Open | T9B | Was Medium/High with only a hotspot as the plan. Impact lowered to Medium because the offline fallback exists. It was only tested on a test copy (2026-11-09), so it stays Open until we try it on the live server |
+| R-2 | If the server laptop crashes or runs out of battery, then OneTouch is gone, because the whole app runs from that one laptop | Low | High | Laptop charged and plugged in. Run the quality gate before every run (app, Cube, Metabase and public link were green on 2026-11-09). PDF copy of the slides on the second laptop | Ventura | Open | T9B | Was "ensure server host is connected and fully charged". Added the gate and the slide PDF. Still a single point of failure: no second machine can run the app |
+| R-3 | If Claude is slow or unreachable during step 3, then the question spins on stage | Medium | Medium | Fixed in D-1 to D-4: 20 s timeout, plain-English error, saved answers that survive a restart, offline label. On stage we ask only warm-up questions, never follow-ups | Ventura | Mitigated | T11A failure injection | New. Before the fixes, reading the code showed a 10-minute wait then "Claude API error (undefined)". After the fixes, a hung network gave up in 6.5 s and a saved answer came back in 0.1 s. Test copy only: not yet repeated mid-demo as a team |
+| R-4 | If we don't run `npm run warmup` on the presentation day, then the offline fallback has no saved answers and step 3 shows only a suggestions list | Medium | High | Run `npm run warmup` on presentation day (answers are saved per day; it must end with 0 failures), then the gate. Don't start the demo on RED | Ventura | Open | T11A failure injection | New. Gate's saved-answers check is RED until the app restarts on the new code and the warm-up runs. D-5 (warmup password mismatch) is already fixed, so the warm-up can sign in again |
+| R-5 | If someone freezes or the driver's laptop fails, then nobody is assigned to run the fallback, because the Backup role in the runbook has no name | Medium | High | Name one Backup today. Agree a hand-off signal. Backup holds the second laptop and this runbook, and flips the offline commands on the narrator's signal | TBD: team assigns at rehearsal | Open | T11A runbook | New. The runbook still says "TODO: name one person". Plan is written but the role is unowned |
+| R-6 | If the demo runs about 9 minutes, then it overruns a shorter slot and steps get cut mid-story. The T11B rehearsal rounds give about 6 minutes of demo | High | Medium | Time a full run with a stopwatch. Agree a cut order ahead of time. Backup watches the clock | TBD: team assigns at rehearsal | Open | T11A runbook | New. The runbook's six steps add up to 540 seconds (9 min) but have never been timed in a real run |
+| R-7 | If the second laptop can't sign in as the player in step 5, then the "player sees it at once" moment is lost | Low | Medium | Driver shows the Brewers tickets in the Team tab on the admin laptop and narrates what the player would see. Sign in on the second laptop before starting | Ventura | Open | T11A runbook | New. The fallback is written in the runbook but we haven't practiced it |
+| R-8 | If the demo database is rebuilt or the demo tickets aren't reset, then steps 4 and 5 have nothing to assign | Low | High | `db/demo-tickets.sql` and the Brewers test team restored. Reset between runs: Undo every status, then Put the demo tickets back (under a minute). Gate checks the data | Ventura | Happened | T11A failure injection | New. It happened: the 2026-11-05 Postgres rebuild wiped the 11 [Demo] tickets and the Brewers (D-6, S1). Restored 2026-11-09. Stays visible so it isn't repeated before the presentation |
